@@ -1,11 +1,12 @@
 Player = Class {}
 
-function Player:init(world, x, y, radius, mass, speed, jump, leftKey, rightKey, jumpKey)
+function Player:init(world, x, y, radius, mass, speed, jump, gScale, leftKey, rightKey, jumpKey)
     self.s = speed
     self.j = jump
     self.lk = leftKey
     self.rk = rightKey
     self.jk = jumpKey
+    self.gs = gScale
 
     self.body = love.physics.newBody(world, x, y, 'dynamic')
 
@@ -14,6 +15,7 @@ function Player:init(world, x, y, radius, mass, speed, jump, leftKey, rightKey, 
     self.fixture = love.physics.newFixture(self.body, self.shape)
 
     self.body:setMass(mass)
+    self.body:setGravityScale(self.gs)
 
     -- self.fixture:setRestitution(bounce)
 end

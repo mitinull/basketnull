@@ -12,8 +12,14 @@ function love.load()
     Player1 = Player(World,
         WINDOWS_WIDTH - 4 * PLAYER_RADIUS,
         WINDOWS_HEGHT - GROUND_HEIGHT - PLAYER_RADIUS,
-        PLAYER_RADIUS, PLAYER_MASS, PLAYER_SPEED, PLAYER_JUMP,
+        PLAYER_RADIUS, PLAYER_MASS, PLAYER_SPEED, PLAYER_JUMP, PLAYER_GSCALE,
         'left', 'right', 'up')
+
+    Player2 = Player(World,
+        4 * PLAYER_RADIUS,
+        WINDOWS_HEGHT - GROUND_HEIGHT - PLAYER_RADIUS,
+        PLAYER_RADIUS, PLAYER_MASS, PLAYER_SPEED, PLAYER_JUMP, PLAYER_GSCALE,
+        'a', 'd', 'w')
 
     love.keyboard.keysPressed = {}
 end
@@ -38,6 +44,7 @@ end
 function love.update(dt)
     World:update(dt)
     Player1:update(dt)
+    Player2:update(dt)
 
     love.keyboard.keysPressed = {}
 end
@@ -46,4 +53,5 @@ function love.draw()
     Ground1:render()
     Ball1:render()
     Player1:render()
+    Player2:render()
 end
