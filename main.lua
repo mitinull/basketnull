@@ -7,6 +7,13 @@ function love.load()
 
     Ground1 = Ground(World, GROUND_HEIGHT)
 
+    -- walls
+    local leftWallBody = love.physics.newBody(World, 0, 0, 'static')
+    local rightWallBody = love.physics.newBody(World, WINDOWS_WIDTH, 0, 'static')
+    local wallShape = love.physics.newEdgeShape(0, 0, 0, WINDOWS_HEGHT)
+    love.physics.newFixture(leftWallBody, wallShape)
+    love.physics.newFixture(rightWallBody, wallShape)
+
     Ball1 = Ball(World, WINDOWS_WIDTH / 2, WINDOWS_HEGHT / 2, BALL_RADIUS, BALL_BOUNCE, BALL_DAMPING)
 
     Player1 = Player(World,
