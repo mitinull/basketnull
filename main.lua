@@ -12,7 +12,8 @@ function love.load()
     Player1 = Player(World,
         WINDOWS_WIDTH - 4 * PLAYER_RADIUS,
         WINDOWS_HEGHT - GROUND_HEIGHT - PLAYER_RADIUS,
-        PLAYER_RADIUS, PLAYER_BOUNCE, PLAYER_SPEED, 'left', 'right')
+        PLAYER_RADIUS, PLAYER_MASS, PLAYER_SPEED, PLAYER_JUMP,
+        'left', 'right', 'up')
 
     love.keyboard.keysPressed = {}
 end
@@ -20,6 +21,11 @@ end
 function love.keypressed(key)
     if key == 'escape' then
         love.event.quit()
+    end
+
+    if key == 'r' then
+        Ball1.body:destroy()
+        Ball1 = Ball(World, WINDOWS_WIDTH / 2, WINDOWS_HEGHT / 2, BALL_RADIUS, BALL_BOUNCE, BALL_DAMPING)
     end
 
     love.keyboard.keysPressed[key] = true
