@@ -1,6 +1,6 @@
 Ball = Class {}
 
-function Ball:init(world, x, y, radius, bounce)
+function Ball:init(world, x, y, radius, bounce, damping)
     self.body = love.physics.newBody(world, x, y, 'dynamic')
 
     self.shape = love.physics.newCircleShape(radius)
@@ -8,6 +8,7 @@ function Ball:init(world, x, y, radius, bounce)
     self.fixture = love.physics.newFixture(self.body, self.shape)
 
     self.fixture:setRestitution(bounce)
+    self.body:setAngularDamping(damping)
 end
 
 function Ball:render()
