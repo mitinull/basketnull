@@ -28,6 +28,8 @@ function love.load()
         PLAYER_RADIUS, PLAYER_MASS, PLAYER_SPEED, PLAYER_JUMP, PLAYER_GSCALE,
         'a', 'd', 'w')
 
+    Basket1 = Basket(World, 200, 200, 50)
+
     love.keyboard.keysPressed = {}
 end
 
@@ -61,4 +63,5 @@ function love.draw()
     Ball1:render()
     Player1:render()
     Player2:render()
+    Basket1:render()
 end
