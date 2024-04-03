@@ -26,7 +26,9 @@ function PlayState:init()
         PLAYER_RADIUS, PLAYER_MASS, PLAYER_SPEED, PLAYER_JUMP, PLAYER_GSCALE,
         'a', 'd', 'w')
 
-    self.basket = Basket(self.world, 200, 200, 100, 50)
+    self.basket = Basket(self.world, 200, 500, 100, 50)
+
+    self.ballInBasketTimer = 0
 end
 
 function PlayState:update(dt)
@@ -35,7 +37,12 @@ function PlayState:update(dt)
     self.player2:update(dt)
 
     if self.basket:ballIsInside(self.ball) then
-        GameState:change('start')
+        self.ballInBasketTimer = self.ballInBasketTimer + dt
+        if self.ballInBasketTimer > 3 then
+            GameState:change('start')
+        end
+    else
+        self.ballInBasketTimer = 0
     end
 
     if love.keyboard.wasPressed('r') then
@@ -54,4 +61,11 @@ function PlayState:render()
     self.player1:render()
     self.player2:render()
     self.basket:render()
+    love.graphics.setColor(.5, 1, 0)
+    if self.ballInBasketTimer > 0 then
+        love.graphics.printf(math.ceil(3 - self.ballInBasketTimer),
+            self.basket.body:getX() - self.basket.width / 2, self.basket.body:getY() - 6,
+            self.basket.width, 'center')
+    end
+    love.graphics.setColor(WHITE)
 end
