@@ -28,7 +28,7 @@ function love.load()
         PLAYER_RADIUS, PLAYER_MASS, PLAYER_SPEED, PLAYER_JUMP, PLAYER_GSCALE,
         'a', 'd', 'w')
 
-    Basket1 = Basket(World, 200, 200, 50)
+    Basket1 = Basket(World, 200, 200, 100, 50)
 
     love.keyboard.keysPressed = {}
 end
@@ -54,6 +54,10 @@ function love.update(dt)
     World:update(dt)
     Player1:update(dt)
     Player2:update(dt)
+
+    if Basket1:ballIsInside(Ball1) then
+        love.event.quit()
+    end
 
     love.keyboard.keysPressed = {}
 end
