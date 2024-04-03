@@ -1,6 +1,0 @@
-Class = require 'class'
-require 'constants'
-require 'Ground'
-require 'Ball'
-require 'Player'
-require 'Basket'
