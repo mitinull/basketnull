@@ -42,4 +42,8 @@ function PlayState:render()
         love.graphics.printf(math.ceil(self.countDown * 2), 0, VIRTUAL_HEIGHT / 2 - 128, VIRTUAL_WIDTH, 'center')
         love.graphics.setColor(WHITE)
     end
+
+    love.graphics.setFont(FontPrimaryMedium)
+    love.graphics.setColor(COLOR3)
+    love.graphics.printf('[R]eset', 0, 40, VIRTUAL_WIDTH - 60, 'right')
 end
