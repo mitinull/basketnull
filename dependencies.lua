@@ -11,6 +11,7 @@ require 'levels/Level1'
 require 'levels/Level2'
 require 'levels/Level3'
 require 'levels/Level4'
+require 'levels/Level5'
 
 require 'entities/Ground'
 require 'entities/Ball'

@@ -5,7 +5,8 @@ function PlayState:init()
         [1] = Level1,
         [2] = Level2,
         [3] = Level3,
-        [4] = Level4
+        [4] = Level4,
+        [5] = Level5,
     }
 
     self.countDown = 1.5
@@ -29,7 +30,7 @@ function PlayState:update(dt)
     end
 
     if love.keyboard.wasPressed('escape') then
-        GameState:change('start')
+        GameState:change('start', self.levelNumber)
     end
 end
 
