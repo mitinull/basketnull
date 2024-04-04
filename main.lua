@@ -30,7 +30,10 @@ function love.update(dt)
 end
 
 function love.draw()
+    love.graphics.setFont(FontPrimarySmall)
     love.graphics.scale(WINDOW_WIDTH / VIRTUAL_WIDTH, WINDOW_HEIGHT / VIRTUAL_HEIGHT)
     GameState:render()
-    love.graphics.print('FPS: ' .. tostring(love.timer.getFPS()), 10, 10)
+    love.graphics.setColor(.5, .5, 1)
+    love.graphics.print('FPS: ' .. tostring(love.timer.getFPS()), 40, 40)
+    love.graphics.setColor(WHITE)
 end

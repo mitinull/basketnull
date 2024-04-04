@@ -14,3 +14,5 @@ require 'entities/Ground'
 require 'entities/Ball'
 require 'entities/Player'
 require 'entities/Basket'
+
+FontPrimarySmall = love.graphics.newFont('fonts/angrybirds.ttf', 64)
