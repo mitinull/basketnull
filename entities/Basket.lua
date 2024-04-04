@@ -26,8 +26,10 @@ function Basket:ballIsInside(ball)
 end
 
 function Basket:render()
-    love.graphics.setLineWidth(6)
+    love.graphics.setLineWidth(12)
+    love.graphics.setColor(BASKET_COLOR)
     love.graphics.line(self.body:getWorldPoints(self.leftShape:getPoints()))
     love.graphics.line(self.body:getWorldPoints(self.bottomShape:getPoints()))
     love.graphics.line(self.body:getWorldPoints(self.rightShape:getPoints()))
+    love.graphics.setColor(WHITE)
 end

@@ -16,3 +16,4 @@ require 'entities/Player'
 require 'entities/Basket'
 
 FontPrimarySmall = love.graphics.newFont('fonts/angrybirds.ttf', 64)
+FontPrimaryLarge = love.graphics.newFont('fonts/angrybirds.ttf', 256)
