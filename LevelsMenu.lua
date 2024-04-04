@@ -1,6 +1,6 @@
 LevelsMenu = Class {}
 
-function LevelsMenu:init()
+function LevelsMenu:init(selected)
     self.x = 510
     self.y = VIRTUAL_HEIGHT / 2
     self.width = 500
@@ -8,7 +8,7 @@ function LevelsMenu:init()
     self.gap = 80
     self.columns = 5
 
-    self.selected = 1
+    self.selected = selected or 1
     self.numLevels = 5
 end
 
@@ -37,19 +37,33 @@ function LevelsMenu:update()
 end
 
 function LevelsMenu:render()
-    love.graphics.setColor(COLOR2)
+    local passedLevels = {}
+    for i = 1, #PASSED_LEVELS do
+        passedLevels[PASSED_LEVELS[i]] = true
+    end
+
     for i = 1, self.numLevels do
+        if passedLevels[i] then
+            love.graphics.setColor(COLOR3)
+        else
+            love.graphics.setColor(COLOR2)
+        end
         love.graphics.rectangle('fill', self.x + (i - 1) % self.columns * (self.width + self.gap),
             self.y + math.floor((i - 1) / self.columns) * (self.height + self.gap), self.width,
             self.height)
         if i == self.selected then
+            love.graphics.setColor(COLOR1)
+            love.graphics.setLineWidth(16)
+            love.graphics.rectangle('line', self.x + (i - 1) % self.columns * (self.width + self.gap),
+                self.y + math.floor((i - 1) / self.columns) * (self.height + self.gap),
+                self.width,
+                self.height)
             love.graphics.setColor(COLOR4)
             love.graphics.setLineWidth(6)
             love.graphics.rectangle('line', self.x + (i - 1) % self.columns * (self.width + self.gap),
                 self.y + math.floor((i - 1) / self.columns) * (self.height + self.gap),
                 self.width,
                 self.height)
-            love.graphics.setColor(COLOR2)
         end
     end
     love.graphics.setColor(WHITE)

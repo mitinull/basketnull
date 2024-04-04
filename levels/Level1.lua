@@ -32,7 +32,8 @@ function Level1:update(dt)
     if self.basket:ballIsInside(self.ball) then
         self.ballInBasketTimer = self.ballInBasketTimer + dt
         if self.ballInBasketTimer > 3 then
-            GameState:change('start')
+            table.insert(PASSED_LEVELS, 1)
+            GameState:change('start', 2)
         end
     else
         self.ballInBasketTimer = 0

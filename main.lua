@@ -12,6 +12,8 @@ function love.load()
 
     GameState:change('start')
 
+    PASSED_LEVELS = {}
+
     love.keyboard.keysPressed = {}
 end
 

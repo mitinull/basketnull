@@ -1,7 +1,7 @@
 StartState = Class { __includes = BaseState }
 
-function StartState:init()
-    self.menu = LevelsMenu()
+function StartState:enter(selected)
+    self.menu = LevelsMenu(selected)
 end
 
 function StartState:update(dt)
