@@ -45,7 +45,9 @@ function PlayState:render()
         love.graphics.setColor(WHITE)
     end
 
-    love.graphics.setFont(FontPrimaryMedium)
     love.graphics.setColor(COLOR3)
-    love.graphics.printf('[R]eset', 0, 40, VIRTUAL_WIDTH - 60, 'right')
+    love.graphics.setFont(FontPrimarySmall)
+    love.graphics.printf('Menu[escape]', 0, 40, VIRTUAL_WIDTH - 60, 'right')
+    love.graphics.setFont(FontPrimaryMedium)
+    love.graphics.printf('Reset[r]', 0, 120, VIRTUAL_WIDTH - 60, 'right')
 end
