@@ -3,7 +3,8 @@ PlayState = Class { __includes = BaseState }
 function PlayState:init()
     self.levels = {
         [1] = Level1,
-        [2] = Level2
+        [2] = Level2,
+        [3] = Level3
     }
 
     self.countDown = 1.5

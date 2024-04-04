@@ -9,6 +9,7 @@ require 'states/PlayState'
 
 require 'levels/Level1'
 require 'levels/Level2'
+require 'levels/Level3'
 
 require 'entities/Ground'
 require 'entities/Ball'
