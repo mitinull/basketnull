@@ -6,6 +6,10 @@ end
 
 function StartState:update(dt)
     self.menu:update(dt)
+
+    if love.keyboard.wasPressed('escape') then
+        love.event.quit()
+    end
 end
 
 function StartState:render()

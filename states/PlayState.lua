@@ -18,6 +18,10 @@ function PlayState:update(dt)
     if love.keyboard.wasPressed('r') then
         GameState:change('play', self.levelNumber)
     end
+
+    if love.keyboard.wasPressed('escape') then
+        GameState:change('start')
+    end
 end
 
 function PlayState:render()
