@@ -1,13 +1,13 @@
 Basket = Class {}
 
-function Basket:init(world, x, y, width, height)
+function Basket:init(world, x, y, width, height, type)
     self.world = world
     self.x = x
     self.y = y
     self.width = width
     self.height = height
 
-    self.body = love.physics.newBody(world, x, y, 'static')
+    self.body = love.physics.newBody(world, x, y, type or 'static')
 
     self.leftShape = love.physics.newEdgeShape(-width / 2, -height / 2, -width / 2, height / 2)
     self.rightShape = love.physics.newEdgeShape(width / 2, -height / 2, width / 2, height / 2)
@@ -19,10 +19,10 @@ function Basket:init(world, x, y, width, height)
 end
 
 function Basket:ballIsInside(ball)
-    return ball.body:getX() < self.x + self.width / 2 and
-        ball.body:getX() > self.x - self.width / 2 and
-        ball.body:getY() < self.y + self.height / 2 and
-        ball.body:getY() > self.y - self.height / 2
+    return ball.body:getX() < self.body:getX() + self.width / 2 and
+        ball.body:getX() > self.body:getX() - self.width / 2 and
+        ball.body:getY() < self.body:getY() + self.height / 2 and
+        ball.body:getY() > self.body:getY() - self.height / 2
 end
 
 function Basket:render()

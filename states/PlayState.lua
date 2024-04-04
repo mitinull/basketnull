@@ -4,7 +4,8 @@ function PlayState:init()
     self.levels = {
         [1] = Level1,
         [2] = Level2,
-        [3] = Level3
+        [3] = Level3,
+        [4] = Level4
     }
 
     self.countDown = 1.5
