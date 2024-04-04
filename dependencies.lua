@@ -1,6 +1,7 @@
 Class = require 'class'
 
 require 'constants'
+require 'LevelsMenu'
 require 'StateMachine'
 require 'states/BaseState'
 require 'states/StartState'
