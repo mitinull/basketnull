@@ -34,7 +34,9 @@ end
 function PlayState:render()
     self.level:render()
     if self.countDown > 0 then
-        love.graphics.setColor(.5, .5, 1)
+        love.graphics.setColor(0, 0, 0, .5)
+        love.graphics.rectangle('fill', 0, 0, VIRTUAL_WIDTH, VIRTUAL_HEIGHT)
+        love.graphics.setColor(COUNTDOWN_COLOR)
         love.graphics.setFont(FontPrimaryLarge)
         love.graphics.printf(math.ceil(self.countDown * 2), 0, VIRTUAL_HEIGHT / 2 - 128, VIRTUAL_WIDTH, 'center')
         love.graphics.setColor(WHITE)

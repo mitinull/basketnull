@@ -1,14 +1,15 @@
 LevelsMenu = Class {}
 
 function LevelsMenu:init()
-    self.x = 250
-    self.y = 200
-    self.scale = 140
-    self.gap = 20
+    self.x = 510
+    self.y = VIRTUAL_HEIGHT / 2
+    self.width = 500
+    self.height = 750
+    self.gap = 80
     self.columns = 5
 
     self.selected = 1
-    self.numLevels = 9
+    self.numLevels = 5
 end
 
 function LevelsMenu:update()
@@ -36,19 +37,19 @@ function LevelsMenu:update()
 end
 
 function LevelsMenu:render()
-    love.graphics.setColor(.4, .4, .4)
+    love.graphics.setColor(COLOR2)
     for i = 1, self.numLevels do
-        love.graphics.rectangle('fill', self.x + (i - 1) % self.columns * (self.scale + self.gap),
-            self.y + math.floor((i - 1) / self.columns) * (self.scale + self.gap), self.scale,
-            self.scale)
+        love.graphics.rectangle('fill', self.x + (i - 1) % self.columns * (self.width + self.gap),
+            self.y + math.floor((i - 1) / self.columns) * (self.height + self.gap), self.width,
+            self.height)
         if i == self.selected then
-            love.graphics.setColor(0, 1, 0)
-            love.graphics.setLineWidth(4)
-            love.graphics.rectangle('line', self.x + (i - 1) % self.columns * (self.scale + self.gap),
-                self.y + math.floor((i - 1) / self.columns) * (self.scale + self.gap),
-                self.scale,
-                self.scale)
-            love.graphics.setColor(.4, .4, .4)
+            love.graphics.setColor(COLOR4)
+            love.graphics.setLineWidth(6)
+            love.graphics.rectangle('line', self.x + (i - 1) % self.columns * (self.width + self.gap),
+                self.y + math.floor((i - 1) / self.columns) * (self.height + self.gap),
+                self.width,
+                self.height)
+            love.graphics.setColor(COLOR2)
         end
     end
     love.graphics.setColor(WHITE)

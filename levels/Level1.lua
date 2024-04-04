@@ -44,10 +44,11 @@ function Level1:render()
     self.ball:render()
     self.player1:render()
     self.basket:render()
+    love.graphics.setFont(FontPrimaryMedium)
     love.graphics.setColor(BASKET_COLOR)
     if self.ballInBasketTimer > 0 then
         love.graphics.printf(math.ceil(3 - self.ballInBasketTimer),
-            self.basket.body:getX() - self.basket.width / 2, self.basket.body:getY() - 33,
+            self.basket.body:getX() - self.basket.width / 2, self.basket.body:getY() - 50,
             self.basket.width, 'center')
     end
     love.graphics.setColor(WHITE)

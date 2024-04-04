@@ -13,8 +13,9 @@ function StartState:update(dt)
 end
 
 function StartState:render()
-    love.graphics.setColor(0, 1, 0)
-    love.graphics.printf('Press enter to start', 0, 100, VIRTUAL_WIDTH, 'center')
+    love.graphics.setColor(COLOR3)
+    love.graphics.setFont(FontPrimaryMedium)
+    love.graphics.printf('BasketNull (demo)', 0, VIRTUAL_HEIGHT / 2 - 300, VIRTUAL_WIDTH, 'center')
     love.graphics.setColor(WHITE)
 
     self.menu:render()
