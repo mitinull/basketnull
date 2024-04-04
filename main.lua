@@ -3,6 +3,8 @@ require 'dependencies'
 function love.load()
     love.window.setMode(WINDOWS_WIDTH, WINDOWS_HEGHT, { borderless = true })
 
+    love.mouse.setVisible(false)
+
     GameState = StateMachine {
         ['start'] = function() return StartState() end,
         ['play'] = function() return PlayState() end
