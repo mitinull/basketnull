@@ -7,20 +7,20 @@ function Level1:init()
 
     -- walls
     local leftWallBody = love.physics.newBody(self.world, 0, 0, 'static')
-    local rightWallBody = love.physics.newBody(self.world, WINDOWS_WIDTH, 0, 'static')
-    local wallShape = love.physics.newEdgeShape(0, 0, 0, WINDOWS_HEGHT)
+    local rightWallBody = love.physics.newBody(self.world, VIRTUAL_WIDTH, 0, 'static')
+    local wallShape = love.physics.newEdgeShape(0, 0, 0, VIRTUAL_HEIGHT)
     love.physics.newFixture(leftWallBody, wallShape)
     love.physics.newFixture(rightWallBody, wallShape)
 
-    self.ball = Ball(self.world, WINDOWS_WIDTH - 362, WINDOWS_HEGHT / 2, BALL_RADIUS, BALL_BOUNCE, BALL_DAMPING)
+    self.ball = Ball(self.world, VIRTUAL_WIDTH - 1086, VIRTUAL_HEIGHT / 2, BALL_RADIUS, BALL_BOUNCE, BALL_DAMPING)
 
     self.player1 = Player(self.world,
-        WINDOWS_WIDTH - 350,
-        WINDOWS_HEGHT - GROUND_HEIGHT - PLAYER_RADIUS,
+        VIRTUAL_WIDTH - 1050,
+        VIRTUAL_HEIGHT - GROUND_HEIGHT - PLAYER_RADIUS,
         PLAYER_RADIUS, PLAYER_MASS, PLAYER_SPEED, PLAYER_JUMP, PLAYER_GSCALE,
         'left', 'right', 'up')
 
-    self.basket = Basket(self.world, 400, 550, 150, 100)
+    self.basket = Basket(self.world, 1200, 1650, 450, 300)
 
     self.ballInBasketTimer = 0
 end

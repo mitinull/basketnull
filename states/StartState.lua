@@ -14,7 +14,7 @@ end
 
 function StartState:render()
     love.graphics.setColor(0, 1, 0)
-    love.graphics.printf('Press enter to start', 0, 100, WINDOWS_WIDTH, 'center')
+    love.graphics.printf('Press enter to start', 0, 100, VIRTUAL_WIDTH, 'center')
     love.graphics.setColor(WHITE)
 
     self.menu:render()

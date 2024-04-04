@@ -1,7 +1,7 @@
 require 'dependencies'
 
 function love.load()
-    love.window.setMode(WINDOWS_WIDTH, WINDOWS_HEGHT, { borderless = true })
+    love.window.setMode(WINDOW_WIDTH, WINDOW_HEIGHT, { borderless = true })
 
     love.mouse.setVisible(false)
 
@@ -30,6 +30,7 @@ function love.update(dt)
 end
 
 function love.draw()
+    love.graphics.scale(WINDOW_WIDTH / VIRTUAL_WIDTH, WINDOW_HEIGHT / VIRTUAL_HEIGHT)
     GameState:render()
     love.graphics.print('FPS: ' .. tostring(love.timer.getFPS()), 10, 10)
 end
