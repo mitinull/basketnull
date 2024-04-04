@@ -41,6 +41,9 @@ function Level5:update(dt)
 end
 
 function Level5:render()
+    love.graphics.setColor(COLOR2)
+    love.graphics.setFont(FontPrimaryMedium)
+    love.graphics.printf('New levels are underway...', 0, VIRTUAL_HEIGHT / 2, VIRTUAL_WIDTH, 'center')
     self.ground:render()
     self.ball:render()
     self.player1:render()

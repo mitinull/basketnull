@@ -65,6 +65,21 @@ function LevelsMenu:render()
                 self.width,
                 self.height)
         end
+        if i == self.selected then
+            love.graphics.setColor(COLOR4)
+        else
+            love.graphics.setColor(COLOR1)
+        end
+        love.graphics.setFont(FontPrimaryMedium)
+        love.graphics.printf('Level ' .. i, self.x + (i - 1) % self.columns * (self.width + self.gap),
+            self.y + math.floor((i - 1) / self.columns) * (self.height + self.gap) + 135,
+            self.width,
+            'center')
+        love.graphics.setFont(FontPrimarySmall)
+        love.graphics.printf('Level Designer:\n Mitinull', self.x + (i - 1) % self.columns * (self.width + self.gap),
+            self.y + math.floor((i - 1) / self.columns) * (self.height + self.gap) + self.height - 300,
+            self.width,
+            'center')
     end
     love.graphics.setColor(WHITE)
 end
