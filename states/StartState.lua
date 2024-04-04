@@ -5,10 +5,6 @@ function StartState:init()
 end
 
 function StartState:update(dt)
-    if love.keyboard.wasPressed('return') then
-        GameState:change('play')
-    end
-
     self.menu:update(dt)
 end
 

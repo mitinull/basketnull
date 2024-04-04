@@ -29,6 +29,10 @@ function LevelsMenu:update()
         local newInex = self.selected + self.columns
         self.selected = (newInex <= self.numLevels) and newInex or self.selected
     end
+
+    if love.keyboard.wasPressed('return') then
+        GameState:change('play', self.selected)
+    end
 end
 
 function LevelsMenu:render()

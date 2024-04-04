@@ -24,15 +24,15 @@ function Player:update(dt)
     local dx, dy = self.body:getLinearVelocity()
     self.body:setLinearVelocity(0, dy)
 
-    if love.keyboard.isDown(self.lk) then
+    if self.lk and love.keyboard.isDown(self.lk) then
         self.body:setLinearVelocity(-self.s, dy)
     end
 
-    if love.keyboard.isDown(self.rk) then
+    if self.rk and love.keyboard.isDown(self.rk) then
         self.body:setLinearVelocity(self.s, dy)
     end
 
-    if love.keyboard.wasPressed(self.jk) and math.abs(dy) < .01 then
+    if self.jk and love.keyboard.wasPressed(self.jk) and math.abs(dy) < .01 then
         self.body:setLinearVelocity(0, -self.j)
     end
 end
