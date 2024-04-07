@@ -1,6 +1,10 @@
 Level5 = Class { __includes = BaseState }
 
-function Level5:init()
+Level5.designer = "Mitinull"
+
+function Level5:init(onWin)
+    self.win = onWin
+
     self.world = love.physics.newWorld(0, GRAVITY)
 
     self.ground = Ground(self.world, GROUND_HEIGHT)
@@ -32,8 +36,7 @@ function Level5:update(dt)
     if self.basket:ballIsInside(self.ball) then
         self.ballInBasketTimer = self.ballInBasketTimer + dt
         if self.ballInBasketTimer > 3 then
-            table.insert(PASSED_LEVELS, 5)
-            GameState:change('start', 5)
+            self.win()
         end
     else
         self.ballInBasketTimer = 0
@@ -43,7 +46,7 @@ end
 function Level5:render()
     love.graphics.setColor(COLOR2)
     love.graphics.setFont(FontPrimaryMedium)
-    love.graphics.printf('New levels are underway...', 0, VIRTUAL_HEIGHT / 2, VIRTUAL_WIDTH, 'center')
+    love.graphics.printf('Easy?', 0, VIRTUAL_HEIGHT / 2, VIRTUAL_WIDTH, 'center')
     self.ground:render()
     self.ball:render()
     self.player1:render()

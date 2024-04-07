@@ -1,20 +1,27 @@
 PlayState = Class { __includes = BaseState }
 
 function PlayState:init()
-    self.levels = {
-        [1] = Level1,
-        [2] = Level2,
-        [3] = Level3,
-        [4] = Level4,
-        [5] = Level5,
-    }
-
     self.countDown = 1.5
 end
 
-function PlayState:enter(level)
-    self.levelNumber = level
-    self.level = self.levels[level]()
+function PlayState:enter(params)
+    local handleWin = function()
+        if not PassedLevels[params.season] then
+            PassedLevels[params.season] = {}
+        end
+        local passedLevels = {}
+        for i = 1, #PassedLevels[params.season] do
+            passedLevels[PassedLevels[params.season][i]] = true
+        end
+        if not passedLevels[params.level] then
+            table.insert(PassedLevels[params.season], params.level)
+        end
+        GameState:change('start', { season = self.season, level = self.levelNumber + 1 })
+    end
+    self.Level = params.Level
+    self.level = params.Level(handleWin)
+    self.season = params.season
+    self.levelNumber = params.level
 end
 
 function PlayState:update(dt)
@@ -26,11 +33,11 @@ function PlayState:update(dt)
 
 
     if love.keyboard.wasPressed('r') then
-        GameState:change('play', self.levelNumber)
+        GameState:change('play', { Level = self.Level, season = self.season, level = self.levelNumber })
     end
 
-    if love.keyboard.wasPressed('escape') then
-        GameState:change('start', self.levelNumber)
+    if love.keyboard.wasPressed('q') then
+        GameState:change('start', { season = self.season, level = self.levelNumber })
     end
 end
 
@@ -47,7 +54,8 @@ function PlayState:render()
 
     love.graphics.setColor(COLOR3)
     love.graphics.setFont(FontPrimarySmall)
-    love.graphics.printf('Menu[escape]', 0, 40, VIRTUAL_WIDTH - 60, 'right')
+    love.graphics.printf('Menu[q]', 0, 40, VIRTUAL_WIDTH - 60, 'right')
     love.graphics.setFont(FontPrimaryMedium)
-    love.graphics.printf('Reset[r]', 0, 120, VIRTUAL_WIDTH - 60, 'right')
+    love.graphics.printf('Restart[r]', 0, 120, VIRTUAL_WIDTH - 60, 'right')
+    love.graphics.setColor(WHITE)
 end

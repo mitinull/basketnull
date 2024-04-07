@@ -1,6 +1,10 @@
-Level1 = Class { __includes = BaseState }
+Level1 = Class { __includes = BaseLevel }
 
-function Level1:init()
+Level1.designer = 'Mitinull'
+
+function Level1:init(onWin)
+    self.win = onWin
+
     self.world = love.physics.newWorld(0, GRAVITY)
 
     self.ground = Ground(self.world, GROUND_HEIGHT)
@@ -22,6 +26,11 @@ function Level1:init()
 
     self.basket = Basket(self.world, 1200, 1650, 450, 300)
 
+    self.lines = Lines(self.world, {
+        { 0,             VIRTUAL_HEIGHT - GROUND_HEIGHT - 200, 200,                 VIRTUAL_HEIGHT - GROUND_HEIGHT },
+        { VIRTUAL_WIDTH, VIRTUAL_HEIGHT - GROUND_HEIGHT - 200, VIRTUAL_WIDTH - 200, VIRTUAL_HEIGHT - GROUND_HEIGHT },
+    })
+
     self.ballInBasketTimer = 0
 end
 
@@ -32,8 +41,7 @@ function Level1:update(dt)
     if self.basket:ballIsInside(self.ball) then
         self.ballInBasketTimer = self.ballInBasketTimer + dt
         if self.ballInBasketTimer > 3 then
-            table.insert(PASSED_LEVELS, 1)
-            GameState:change('start', 2)
+            self.win()
         end
     else
         self.ballInBasketTimer = 0
@@ -41,10 +49,15 @@ function Level1:update(dt)
 end
 
 function Level1:render()
+    love.graphics.setColor(COLOR2)
+    love.graphics.setFont(FontPrimaryMedium)
+    love.graphics.printf('PUT THE BALL IN THE BASKET!\nMove with "LEFT", "RIGHT" and "UP". Press "R" to restart.', 0,
+        VIRTUAL_HEIGHT / 2 - 190, VIRTUAL_WIDTH, 'center')
     self.ground:render()
     self.ball:render()
     self.player1:render()
     self.basket:render()
+    self.lines:render()
     love.graphics.setFont(FontPrimaryMedium)
     love.graphics.setColor(BASKET_COLOR)
     if self.ballInBasketTimer > 0 then

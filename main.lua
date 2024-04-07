@@ -5,14 +5,14 @@ function love.load()
 
     love.mouse.setVisible(false)
 
+    PassedLevels = {}
+
     GameState = StateMachine {
         ['start'] = function() return StartState() end,
         ['play'] = function() return PlayState() end
     }
 
     GameState:change('start')
-
-    PASSED_LEVELS = {}
 
     love.keyboard.keysPressed = {}
 end

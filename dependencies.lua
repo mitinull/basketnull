@@ -1,17 +1,21 @@
 Class = require 'class'
 
 require 'constants'
+require 'Menu'
+require 'SeasonMenu'
 require 'LevelsMenu'
 require 'StateMachine'
 require 'states/BaseState'
 require 'states/StartState'
 require 'states/PlayState'
 
+require 'levels/BaseLevel'
 require 'levels/Level1'
 require 'levels/Level2'
 require 'levels/Level3'
 require 'levels/Level4'
 require 'levels/Level5'
+require 'levels/Level6'
 
 require 'entities/Ground'
 require 'entities/Ball'

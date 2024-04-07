@@ -1,6 +1,10 @@
 Level2 = Class { __includes = BaseState }
 
-function Level2:init()
+Level2.designer = 'Mitinull'
+
+function Level2:init(onWin)
+    self.win = onWin
+
     self.world = love.physics.newWorld(0, GRAVITY)
 
     self.ground = Ground(self.world, GROUND_HEIGHT)
@@ -24,6 +28,10 @@ function Level2:init()
     self.basket.body:setAngle(math.rad(90))
 
     self.ballInBasketTimer = 0
+
+    self.lines = Lines(self.world, {
+        { 0, VIRTUAL_HEIGHT - GROUND_HEIGHT - 200, 200, VIRTUAL_HEIGHT - GROUND_HEIGHT },
+    })
 end
 
 function Level2:update(dt)
@@ -33,8 +41,7 @@ function Level2:update(dt)
     if self.basket:ballIsInside(self.ball) then
         self.ballInBasketTimer = self.ballInBasketTimer + dt
         if self.ballInBasketTimer > 3 then
-            table.insert(PASSED_LEVELS, 2)
-            GameState:change('start', 3)
+            self.win()
         end
     else
         self.ballInBasketTimer = 0
@@ -46,6 +53,7 @@ function Level2:render()
     self.ball:render()
     self.player1:render()
     self.basket:render()
+    self.lines:render()
     love.graphics.setFont(FontPrimaryMedium)
     love.graphics.setColor(BASKET_COLOR)
     if self.ballInBasketTimer > 0 then

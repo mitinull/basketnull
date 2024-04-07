@@ -1,6 +1,10 @@
 Level4 = Class { __includes = BaseState }
 
-function Level4:init()
+Level4.designer = "Mitinull"
+
+function Level4:init(onWin)
+    self.win = onWin
+
     self.world = love.physics.newWorld(0, GRAVITY)
 
     self.ground = Ground(self.world, GROUND_HEIGHT)
@@ -26,7 +30,7 @@ function Level4:init()
         PLAYER_RADIUS, PLAYER_MASS, PLAYER_SPEED, PLAYER_JUMP, PLAYER_GSCALE,
         nil, nil, nil)
 
-    self.basket = MovingBasket(self.world, 900, VIRTUAL_HEIGHT / 2 - 200, 300, 300, 1500, VIRTUAL_HEIGHT / 2 - 200, 2)
+    self.basket = MovingBasket(self.world, 900, VIRTUAL_HEIGHT / 2 - 100, 300, 300, 1500, VIRTUAL_HEIGHT / 2 - 100, 2)
 
     self.ballInBasketTimer = 0
 
@@ -36,8 +40,8 @@ function Level4:init()
             -- { VIRTUAL_WIDTH / 2 - 400, VIRTUAL_HEIGHT / 2 - 660, 600,                 VIRTUAL_HEIGHT / 2 - 800 },
             { VIRTUAL_WIDTH / 2,   VIRTUAL_HEIGHT / 2 - 600,             VIRTUAL_WIDTH - 600, VIRTUAL_HEIGHT / 2 - 800 },
             { VIRTUAL_WIDTH / 2,   VIRTUAL_HEIGHT / 2 - 600,             VIRTUAL_WIDTH - 600, VIRTUAL_HEIGHT / 2 - 400 },
-            { VIRTUAL_WIDTH - 100, VIRTUAL_HEIGHT - GROUND_HEIGHT - 150, VIRTUAL_WIDTH - 500, VIRTUAL_HEIGHT - GROUND_HEIGHT - 150 },
-            { VIRTUAL_WIDTH - 300, VIRTUAL_HEIGHT - GROUND_HEIGHT - 400, VIRTUAL_WIDTH - 700, VIRTUAL_HEIGHT - GROUND_HEIGHT - 400 },
+            { VIRTUAL_WIDTH - 100, VIRTUAL_HEIGHT - GROUND_HEIGHT - 150, VIRTUAL_WIDTH - 600, VIRTUAL_HEIGHT - GROUND_HEIGHT - 150 },
+            { VIRTUAL_WIDTH - 300, VIRTUAL_HEIGHT - GROUND_HEIGHT - 400, VIRTUAL_WIDTH - 800, VIRTUAL_HEIGHT - GROUND_HEIGHT - 400 },
             -- { VIRTUAL_WIDTH / 2,   VIRTUAL_HEIGHT - GROUND_HEIGHT - 200, VIRTUAL_WIDTH / 2 + 200, VIRTUAL_HEIGHT - GROUND_HEIGHT },
             { 0,                   VIRTUAL_HEIGHT - GROUND_HEIGHT - 200, 200,                 VIRTUAL_HEIGHT - GROUND_HEIGHT },
         })
@@ -59,8 +63,7 @@ function Level4:update(dt)
     if self.basket:ballIsInside(self.ball) then
         self.ballInBasketTimer = self.ballInBasketTimer + dt
         if self.ballInBasketTimer > 3 then
-            table.insert(PASSED_LEVELS, 4)
-            GameState:change('start', 5)
+            self.win()
         end
     else
         self.ballInBasketTimer = 0
