@@ -5,15 +5,18 @@ Level6.designer = "Mitinull"
 function Level6.init(self, onWin)
     BaseLevel.init(self, onWin)
 
-    self.ball = Ball(self.world, 1000, VIRTUAL_HEIGHT / 2, BALL_RADIUS, .3, BALL_DAMPING)
+    self.ball = Ball(self.world, VIRTUAL_WIDTH - 1050, VIRTUAL_HEIGHT / 2, BALL_RADIUS, .5, BALL_DAMPING)
 
-    self.player1 = Player(self.world,
+    self.player1 = PlayerMediumRed(self.world,
         VIRTUAL_WIDTH - 1050,
-        VIRTUAL_HEIGHT - GROUND_HEIGHT - PLAYER_RADIUS,
-        PLAYER_RADIUS, PLAYER_MASS, PLAYER_SPEED, PLAYER_JUMP, PLAYER_GSCALE,
-        'left', 'right', 'up')
+        VIRTUAL_HEIGHT - GROUND_HEIGHT - PlayerMediumRed.radius, 'left', 'right', 'up')
 
     self.basket = Basket(self.world, 1000, VIRTUAL_HEIGHT - GROUND_HEIGHT - 80, 450, 150)
+
+    self.lines = Lines(self.world, {
+        { 0,             VIRTUAL_HEIGHT - GROUND_HEIGHT - 200, 100,                 VIRTUAL_HEIGHT - GROUND_HEIGHT },
+        { VIRTUAL_WIDTH, VIRTUAL_HEIGHT - GROUND_HEIGHT - 200, VIRTUAL_WIDTH - 100, VIRTUAL_HEIGHT - GROUND_HEIGHT },
+    })
 end
 
 function Level6.update(self, dt)
@@ -24,10 +27,12 @@ end
 function Level6:render()
     love.graphics.setColor(COLOR2)
     love.graphics.setFont(FontPrimaryMedium)
-    love.graphics.printf('Temp Level', 0, VIRTUAL_HEIGHT / 2, VIRTUAL_WIDTH, 'center')
+    love.graphics.printf('PUT THE BALL IN THE BASKET!\nMove with "LEFT", "RIGHT" and "UP". Press "R" to restart.', 0,
+        VIRTUAL_HEIGHT / 2 - 190, VIRTUAL_WIDTH, 'center')
     self.ball:render()
     self.player1:render()
     self.basket:render()
     love.graphics.setColor(WHITE)
     BaseLevel.render(self)
+    self.lines:render()
 end

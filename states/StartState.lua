@@ -8,7 +8,7 @@ function StartState:enter(params)
         },
         {
             ['name'] = 'Season 2',
-            ['levels'] = { Level6 }
+            ['levels'] = { Level6, Level7, Level8 }
         }
     }
 
