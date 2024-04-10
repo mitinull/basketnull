@@ -16,7 +16,7 @@ function Level5:init(onWin)
     love.physics.newFixture(leftWallBody, wallShape)
     love.physics.newFixture(rightWallBody, wallShape)
 
-    self.ball = Ball(self.world, 1000, VIRTUAL_HEIGHT / 2, BALL_RADIUS, 1, BALL_DAMPING)
+    self.ball = Ball(self.world, 1000, VIRTUAL_HEIGHT / 2, BALL_RADIUS, 1, BALL_DAMPING, COLOR8)
 
     self.player1 = Player(self.world,
         VIRTUAL_WIDTH - 1050,

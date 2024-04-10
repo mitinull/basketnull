@@ -50,6 +50,12 @@ function Level3:update(dt)
 end
 
 function Level3:render()
+    love.graphics.setColor(COLOR2)
+    love.graphics.setFont(FontPrimaryMedium)
+    love.graphics.printf(
+        "If you don't think about the end first,\nyou will think about the first end.\nPress" .. '"R"' .. "to RESTRAT!",
+        0,
+        VIRTUAL_HEIGHT / 4, VIRTUAL_WIDTH, 'center')
     self.ground:render()
     self.ball:render()
     self.player1:render()

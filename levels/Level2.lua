@@ -49,6 +49,10 @@ function Level2:update(dt)
 end
 
 function Level2:render()
+    love.graphics.setColor(COLOR2)
+    love.graphics.setFont(FontPrimaryMedium)
+    love.graphics.printf('Try and fail,\nbut never fail to try!', 0,
+        VIRTUAL_HEIGHT / 2 - 190, VIRTUAL_WIDTH, 'center')
     self.ground:render()
     self.ball:render()
     self.player1:render()

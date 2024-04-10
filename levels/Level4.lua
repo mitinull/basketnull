@@ -30,18 +30,18 @@ function Level4:init(onWin)
         PLAYER_RADIUS, PLAYER_MASS, PLAYER_SPEED, PLAYER_JUMP, PLAYER_GSCALE,
         nil, nil, nil)
 
-    self.basket = MovingBasket(self.world, 900, VIRTUAL_HEIGHT / 2 - 100, 300, 300, 1500, VIRTUAL_HEIGHT / 2 - 100, 2)
+    self.basket = MovingBasket(self.world, 900, VIRTUAL_HEIGHT / 2, 400, 300, 1500, VIRTUAL_HEIGHT / 2, 2)
 
     self.ballInBasketTimer = 0
 
     self.lines = Lines(self.world,
-        { { VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT / 2 - 600,             VIRTUAL_WIDTH / 2,   VIRTUAL_HEIGHT - GROUND_HEIGHT },
-            { VIRTUAL_WIDTH / 2,   VIRTUAL_HEIGHT / 2 - 600,             600,                 VIRTUAL_HEIGHT / 2 - 400 },
+        { { VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT / 2 - 500,             VIRTUAL_WIDTH / 2,   VIRTUAL_HEIGHT - GROUND_HEIGHT },
+            { VIRTUAL_WIDTH / 2,   VIRTUAL_HEIGHT / 2 - 500,             600,                 VIRTUAL_HEIGHT / 2 - 300 },
             -- { VIRTUAL_WIDTH / 2 - 400, VIRTUAL_HEIGHT / 2 - 660, 600,                 VIRTUAL_HEIGHT / 2 - 800 },
-            { VIRTUAL_WIDTH / 2,   VIRTUAL_HEIGHT / 2 - 600,             VIRTUAL_WIDTH - 600, VIRTUAL_HEIGHT / 2 - 800 },
-            { VIRTUAL_WIDTH / 2,   VIRTUAL_HEIGHT / 2 - 600,             VIRTUAL_WIDTH - 600, VIRTUAL_HEIGHT / 2 - 400 },
-            { VIRTUAL_WIDTH - 100, VIRTUAL_HEIGHT - GROUND_HEIGHT - 150, VIRTUAL_WIDTH - 600, VIRTUAL_HEIGHT - GROUND_HEIGHT - 150 },
-            { VIRTUAL_WIDTH - 300, VIRTUAL_HEIGHT - GROUND_HEIGHT - 400, VIRTUAL_WIDTH - 800, VIRTUAL_HEIGHT - GROUND_HEIGHT - 400 },
+            { VIRTUAL_WIDTH / 2,   VIRTUAL_HEIGHT / 2 - 500,             VIRTUAL_WIDTH - 600, VIRTUAL_HEIGHT / 2 - 700 },
+            { VIRTUAL_WIDTH / 2,   VIRTUAL_HEIGHT / 2 - 500,             VIRTUAL_WIDTH - 600, VIRTUAL_HEIGHT / 2 - 300 },
+            -- { VIRTUAL_WIDTH - 100, VIRTUAL_HEIGHT - GROUND_HEIGHT - 150, VIRTUAL_WIDTH - 600, VIRTUAL_HEIGHT - GROUND_HEIGHT - 150 },
+            { VIRTUAL_WIDTH - 200, VIRTUAL_HEIGHT - GROUND_HEIGHT - 250, VIRTUAL_WIDTH - 800, VIRTUAL_HEIGHT - GROUND_HEIGHT - 250 },
             -- { VIRTUAL_WIDTH / 2,   VIRTUAL_HEIGHT - GROUND_HEIGHT - 200, VIRTUAL_WIDTH / 2 + 200, VIRTUAL_HEIGHT - GROUND_HEIGHT },
             { 0,                   VIRTUAL_HEIGHT - GROUND_HEIGHT - 200, 200,                 VIRTUAL_HEIGHT - GROUND_HEIGHT },
         })
@@ -71,6 +71,10 @@ function Level4:update(dt)
 end
 
 function Level4:render()
+    love.graphics.setColor(COLOR2)
+    love.graphics.setFont(FontPrimarySmall)
+    love.graphics.printf('Press "R" to RESTART!', VIRTUAL_WIDTH - 800,
+        VIRTUAL_HEIGHT - GROUND_HEIGHT - 200, 600, 'center')
     self.ground:render()
     self.ball:render()
     self.player1:render()
