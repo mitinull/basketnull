@@ -10,6 +10,7 @@ require 'states/StartState'
 require 'states/PlayState'
 
 require 'levels/BaseLevel'
+require 'levels/Level00'
 require 'levels/Level1'
 require 'levels/Level2'
 require 'levels/Level3'

@@ -38,6 +38,7 @@ function Player:update(dt)
 end
 
 function Player:render()
+    love.graphics.setLineWidth(1)
     love.graphics.setColor(PLAYER_COLOR)
     love.graphics.circle('fill', self.body:getX(), self.body:getY(), self.shape:getRadius())
     love.graphics.circle('line', self.body:getX(), self.body:getY(), self.shape:getRadius())

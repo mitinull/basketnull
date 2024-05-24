@@ -32,6 +32,7 @@ function love.update(dt)
 end
 
 function love.draw()
+    love.graphics.setLineWidth(1)
     love.graphics.setBackgroundColor(BACKGROUND_COLOR)
     love.graphics.setFont(FontPrimarySmall)
     love.graphics.scale(WINDOW_WIDTH / VIRTUAL_WIDTH, WINDOW_HEIGHT / VIRTUAL_HEIGHT)
