@@ -32,6 +32,10 @@ end
 
 function BaseLevel:render()
     self.ground:render()
+    love.graphics.setColor(WHITE)
+end
+
+function BaseLevel:renderCountDown()
     love.graphics.setFont(FontPrimaryMedium)
     love.graphics.setColor(BASKET_COLOR)
     if self.ballInBasketTimer > 0 then
@@ -39,5 +43,4 @@ function BaseLevel:render()
             self.basket.body:getX() - self.basket.width / 2, self.basket.body:getY() - 50,
             self.basket.width, 'center')
     end
-    love.graphics.setColor(WHITE)
 end

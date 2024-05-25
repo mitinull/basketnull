@@ -4,7 +4,7 @@ function StartState:enter(params)
     local seasons = {
         {
             ['name'] = 'Season 0',
-            ['levels'] = { Level00 }
+            ['levels'] = { Level00, Level0_2 }
         },
         {
             ['name'] = 'Season 1',
