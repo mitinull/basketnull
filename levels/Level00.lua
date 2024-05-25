@@ -34,7 +34,7 @@ function Level00:render()
     love.graphics.setFont(FontPrimarySemiSamall)
     love.graphics.setColor(COLOR3)
     love.graphics.printf(
-        'Move with "LEFT", "RIGHT" and "UP" keys.\nPress "R" to restart the level.\nPress "Q" to go back to menu.', 0,
+        'Move with the "LEFT", "RIGHT" and "UP" keys.\nPress "R" to restart the level.\nPress "Q" to go back to the menu.', 0,
         VIRTUAL_HEIGHT / 2 - 140 , VIRTUAL_WIDTH, 'center')
     self.ball:render()
     self.player1:render()

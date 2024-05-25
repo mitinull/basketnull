@@ -30,11 +30,16 @@ function Level0_2:render()
     BaseLevel.render(self)
     love.graphics.setColor(BASKET_COLOR[1], BASKET_COLOR[2], BASKET_COLOR[3], .4)
     love.graphics.draw(self.arrow, 810, VIRTUAL_HEIGHT - GROUND_HEIGHT - 215, -90, .35, .35)
+    love.graphics.setColor(BASKET_COLOR)
+    love.graphics.setFont(FontPrimarySmall)
+    love.graphics.printf(
+        'Place the ball into the small basket and keep it there for three seconds!\nPress "R" to restart. Press "Q" to quit.', 0,
+        VIRTUAL_HEIGHT / 2 - 110, VIRTUAL_WIDTH, 'center')
     love.graphics.setColor(COLOR5)
     love.graphics.setFont(FontPrimaryMedium)
     love.graphics.printf(
-        'Press "R" to restart.\nMove with "LEFT" and "RIGHT" keys.\nJump with "UP" key.', 0,
-        VIRTUAL_HEIGHT / 2 - 390, VIRTUAL_WIDTH, 'center')
+        'Move with "LEFT" and "RIGHT" keys.\nJump with "UP" key.', 0,
+        VIRTUAL_HEIGHT / 2 - 400, VIRTUAL_WIDTH, 'center')
     self.lines:render()
     self.ball:render()
     self.player1:render()
