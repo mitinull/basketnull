@@ -14,12 +14,18 @@ function Level0_4.init(self, onWin)
     self.basket = Basket(self.world, 1000, VIRTUAL_HEIGHT - GROUND_HEIGHT - 108, 400, 200)
 
     self.lines = Lines(self.world, {
-        { VIRTUAL_WIDTH / 2,        VIRTUAL_HEIGHT / 2,                   VIRTUAL_WIDTH / 2,        VIRTUAL_HEIGHT - GROUND_HEIGHT },
-        { 0,                        VIRTUAL_HEIGHT - GROUND_HEIGHT - 300, 300,                      VIRTUAL_HEIGHT - GROUND_HEIGHT },
-        { VIRTUAL_WIDTH / 2 + 300,  VIRTUAL_HEIGHT / 2 + 200,             VIRTUAL_WIDTH / 2 + 600,  VIRTUAL_HEIGHT / 2 + 200 },
-        { VIRTUAL_WIDTH / 2 + 800,  VIRTUAL_HEIGHT / 2 + 450,             VIRTUAL_WIDTH / 2 + 1100, VIRTUAL_HEIGHT / 2 + 450 },
-        { VIRTUAL_WIDTH / 2 + 1300, VIRTUAL_HEIGHT / 2 + 700,             VIRTUAL_WIDTH / 2 + 1600, VIRTUAL_HEIGHT / 2 + 700 },
+        { VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT / 2, VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT - GROUND_HEIGHT },
     })
+
+    self.ramps = Lines(self.world, {
+        { 0, VIRTUAL_HEIGHT - GROUND_HEIGHT - 300, 300, VIRTUAL_HEIGHT - GROUND_HEIGHT },
+    }, COLOR5)
+
+    self.stairs = Lines(self.world, {
+        { VIRTUAL_WIDTH / 2 + 300,  VIRTUAL_HEIGHT / 2 + 200, VIRTUAL_WIDTH / 2 + 600,  VIRTUAL_HEIGHT / 2 + 200 },
+        { VIRTUAL_WIDTH / 2 + 800,  VIRTUAL_HEIGHT / 2 + 450, VIRTUAL_WIDTH / 2 + 1100, VIRTUAL_HEIGHT / 2 + 450 },
+        { VIRTUAL_WIDTH / 2 + 1300, VIRTUAL_HEIGHT / 2 + 700, VIRTUAL_WIDTH / 2 + 1600, VIRTUAL_HEIGHT / 2 + 700 },
+    }, COLOR5)
 end
 
 function Level0_4.update(self, dt)
@@ -41,6 +47,8 @@ function Level0_4:render()
         '“Be yourself; everyone else is already taken.”', 0,
         VIRTUAL_HEIGHT / 2 - 600, VIRTUAL_WIDTH, 'center')
     self.lines:render()
+    self.ramps:render()
+    self.stairs:render()
     self.ball:render()
     self.player1:render()
     self.basket:render()

@@ -15,9 +15,12 @@ function Level0_3.init(self, onWin)
 
     self.lines = Lines(self.world, {
         { 0, VIRTUAL_HEIGHT / 2, VIRTUAL_WIDTH - 300, VIRTUAL_HEIGHT / 2 + 300 },
-        { 1000 - 200, VIRTUAL_HEIGHT - GROUND_HEIGHT - 200, 1000 - 400, VIRTUAL_HEIGHT - GROUND_HEIGHT},
-        { 1000 + 200, VIRTUAL_HEIGHT - GROUND_HEIGHT - 200, 1000 + 400, VIRTUAL_HEIGHT - GROUND_HEIGHT},
     })
+
+    self.ramps = Lines(self.world, {
+        { 1000 - 200, VIRTUAL_HEIGHT - GROUND_HEIGHT - 150, 1000 - 350, VIRTUAL_HEIGHT - GROUND_HEIGHT },
+        { 1000 + 200, VIRTUAL_HEIGHT - GROUND_HEIGHT - 150, 1000 + 350, VIRTUAL_HEIGHT - GROUND_HEIGHT },
+    }, COLOR5)
 end
 
 function Level0_3.update(self, dt)
@@ -39,6 +42,7 @@ function Level0_3:render()
         'PLEASE WAIT...', 0,
         VIRTUAL_HEIGHT / 2 - 500, VIRTUAL_WIDTH, 'center')
     self.lines:render()
+    self.ramps:render()
     self.ball:render()
     self.player1:render()
     self.basket:render()
