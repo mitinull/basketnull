@@ -14,7 +14,7 @@ function Level0_3.init(self, onWin)
     self.basket = Basket(self.world, 1000, VIRTUAL_HEIGHT - GROUND_HEIGHT - 108, 400, 200)
 
     self.lines = Lines(self.world, {
-        { 0, VIRTUAL_HEIGHT / 2, VIRTUAL_WIDTH - 300, VIRTUAL_HEIGHT / 2 + 300 },
+        { 0, VIRTUAL_HEIGHT / 2 + 50, VIRTUAL_WIDTH - 300, VIRTUAL_HEIGHT / 2 + 350 },
     })
 
     self.ramps = Lines(self.world, {
