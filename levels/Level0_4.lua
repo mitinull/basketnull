@@ -42,7 +42,7 @@ function Level0_4:render()
         'Press "R" to try again!', 0,
         VIRTUAL_HEIGHT / 2 - 450, VIRTUAL_WIDTH, 'center')
     love.graphics.setColor(COLOR5)
-    love.graphics.setFont(FontPrimarySemiSamall)
+    love.graphics.setFont(FontPrimarySemiSmall)
     love.graphics.printf(
         '“Be yourself; everyone else is already taken.”', 0,
         VIRTUAL_HEIGHT / 2 - 600, VIRTUAL_WIDTH, 'center')

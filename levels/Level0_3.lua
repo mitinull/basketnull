@@ -32,7 +32,7 @@ function Level0_3:render()
     BaseLevel.render(self)
     love.graphics.setColor(BASKET_COLOR[1], BASKET_COLOR[2], BASKET_COLOR[3], .4)
     love.graphics.setColor(BASKET_COLOR)
-    love.graphics.setFont(FontPrimarySemiSamall)
+    love.graphics.setFont(FontPrimarySemiSmall)
     love.graphics.printf(
         "As you wait for better days, don't forget to enjoy today,\n in case they've already started.", 0,
         VIRTUAL_HEIGHT / 2 - 350, VIRTUAL_WIDTH, 'center')
