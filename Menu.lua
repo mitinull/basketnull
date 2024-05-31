@@ -57,13 +57,13 @@ function Menu:render()
             self.height)
         if i == self.selected then
             love.graphics.setColor(COLOR1)
-            love.graphics.setLineWidth(15)
+            love.graphics.setLineWidth(18)
             love.graphics.rectangle('line', self.x + (i - 1) % self.columns * (self.width + self.gap),
                 self.y + math.floor((i - 1) / self.columns) * (self.height + self.gap),
                 self.width,
                 self.height)
-            love.graphics.setColor(COLOR5)
-            love.graphics.setLineWidth(6)
+            love.graphics.setColor(COLOR4)
+            love.graphics.setLineWidth(8)
             love.graphics.rectangle('line', self.x + (i - 1) % self.columns * (self.width + self.gap),
                 self.y + math.floor((i - 1) / self.columns) * (self.height + self.gap),
                 self.width,
