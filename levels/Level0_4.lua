@@ -14,7 +14,7 @@ function Level0_4.init(self, onWin)
     self.basket = Basket(self.world, 1000, VIRTUAL_HEIGHT - GROUND_HEIGHT - 108, 400, 200)
 
     self.lines = Lines(self.world, {
-        { VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT / 2, VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT - GROUND_HEIGHT },
+        { VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT / 2 + 200, VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT - GROUND_HEIGHT },
     })
 
     self.ramps = Lines(self.world, {
@@ -36,16 +36,16 @@ end
 function Level0_4:render()
     BaseLevel.render(self)
     love.graphics.setColor(BASKET_COLOR[1], BASKET_COLOR[2], BASKET_COLOR[3], .4)
-    love.graphics.setColor(BASKET_COLOR)
+    love.graphics.setColor(COLOR3)
     love.graphics.setFont(FontPrimaryMedium)
     love.graphics.printf(
         'Press "R" to try again!', 0,
-        VIRTUAL_HEIGHT / 2 - 450, VIRTUAL_WIDTH, 'center')
-    love.graphics.setColor(COLOR5)
-    love.graphics.setFont(FontPrimarySemiSmall)
+        VIRTUAL_HEIGHT / 2 - 290, VIRTUAL_WIDTH, 'center')
+    love.graphics.setColor(BASKET_COLOR)
+    love.graphics.setFont(FontPrimaryMedium)
     love.graphics.printf(
-        '“Be yourself; everyone else is already taken.”', 0,
-        VIRTUAL_HEIGHT / 2 - 600, VIRTUAL_WIDTH, 'center')
+        '“BE YOURSELF; EVERYONE ELSE IS ALREADY TAKEN.”', 0,
+        VIRTUAL_HEIGHT / 2 - 450, VIRTUAL_WIDTH, 'center')
     self.lines:render()
     self.ramps:render()
     self.stairs:render()

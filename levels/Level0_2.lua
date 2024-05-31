@@ -35,7 +35,7 @@ function Level0_2:render()
     love.graphics.printf(
         'Place the ball into the small basket and keep it there for three seconds!\nPress "R" to restart. Press "Q" to quit.', 0,
         VIRTUAL_HEIGHT / 2 - 110, VIRTUAL_WIDTH, 'center')
-    love.graphics.setColor(COLOR5)
+    love.graphics.setColor(COLOR3)
     love.graphics.setFont(FontPrimaryMedium)
     love.graphics.printf(
         'Move with "LEFT" and "RIGHT" keys.\nJump with "UP" key.', 0,

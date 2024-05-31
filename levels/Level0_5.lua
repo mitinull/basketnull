@@ -38,21 +38,21 @@ function Level0_5:render()
     BaseLevel.render(self)
     love.graphics.setColor(BASKET_COLOR[1], BASKET_COLOR[2], BASKET_COLOR[3], .4)
     love.graphics.setColor(BASKET_COLOR)
+    love.graphics.setFont(FontPrimaryLarge)
+    love.graphics.printf(
+        "I'M GLAD THERE IS YOU!", 0,
+        VIRTUAL_HEIGHT / 2 - 345, VIRTUAL_WIDTH, 'center')
+    love.graphics.setColor(BASKET_COLOR)
     love.graphics.setFont(FontPrimaryMedium)
     love.graphics.printf(
-        "I'm glad there is you!", 0,
-        VIRTUAL_HEIGHT / 2 - 350, VIRTUAL_WIDTH, 'center')
-    love.graphics.setColor(COLOR5)
-    love.graphics.setFont(FontPrimarySmall)
-    love.graphics.printf(
-        'In this world of overrated pleasures\nand underrated treasures,', 0,
-        VIRTUAL_HEIGHT / 2 - 500, VIRTUAL_WIDTH, 'center')
+        'IN THIS WORLD OF OVERRATED PLEASURES AND UNDERRATED TREASURES,', 0,
+        VIRTUAL_HEIGHT / 2 - 475, VIRTUAL_WIDTH, 'center')
 
     love.graphics.setColor(COLOR9)
     love.graphics.setFont(FontPrimarySemiSmall)
     love.graphics.printf(
         'Move the blue player with "A" and "D".', 0,
-        VIRTUAL_HEIGHT / 2 - 150, VIRTUAL_WIDTH, 'center')
+        VIRTUAL_HEIGHT / 2 + 430, 1500, 'center')
     self.lines:render()
     self.ramps:render()
     self.ball:render()
