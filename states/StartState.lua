@@ -3,15 +3,18 @@ StartState = Class { __includes = BaseState }
 function StartState:enter(params)
     local seasons = {
         {
-            ['name'] = 'Season 0',
+            ['name'] = 'Chapter 0:',
+            ['description'] = 'Warm Up!',
             ['levels'] = { Level00, Level0_2, Level0_3, Level0_4, Level0_5 }
         },
         {
-            ['name'] = 'Season 1',
+            ['name'] = 'Chapter 1:',
+            ['description'] = 'Time to Play!',
             ['levels'] = { Level1, Level2, Level3, Level4, Level5 },
         },
         {
-            ['name'] = 'Season 2',
+            ['name'] = 'Chapter 2:',
+            ['description'] = 'Creativity!',
             ['levels'] = { Level6, Level7, Level8 }
         }
     }

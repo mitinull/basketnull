@@ -1,12 +1,13 @@
 Menu = Class {}
 
-function Menu:init(selected, items, highlightedItems, x, y, w, h, g, c)
+function Menu:init(selected, items, highlightedItems, x, y, w, h, g, c, rs)
     self.x = x
     self.y = y
     self.width = w
     self.height = h
     self.gap = g
     self.columns = c
+    self.reversedSize = rs or false
 
     self.selected = selected or 1
     self.items = items
@@ -45,7 +46,9 @@ function Menu:render()
 
     for i = 1, #self.items do
         if highlightedItmes[i] then
-            love.graphics.setColor(COLOR3)
+            love.graphics.setColor(BASKET_COLOR)
+        elseif i == self.selected then
+            love.graphics.setColor(COLOR5)
         else
             love.graphics.setColor(COLOR2)
         end
@@ -54,30 +57,26 @@ function Menu:render()
             self.height)
         if i == self.selected then
             love.graphics.setColor(COLOR1)
-            love.graphics.setLineWidth(16)
+            love.graphics.setLineWidth(15)
             love.graphics.rectangle('line', self.x + (i - 1) % self.columns * (self.width + self.gap),
                 self.y + math.floor((i - 1) / self.columns) * (self.height + self.gap),
                 self.width,
                 self.height)
-            love.graphics.setColor(COLOR4)
+            love.graphics.setColor(COLOR5)
             love.graphics.setLineWidth(6)
             love.graphics.rectangle('line', self.x + (i - 1) % self.columns * (self.width + self.gap),
                 self.y + math.floor((i - 1) / self.columns) * (self.height + self.gap),
                 self.width,
                 self.height)
         end
-        if i == self.selected then
-            love.graphics.setColor(COLOR4)
-        else
-            love.graphics.setColor(COLOR1)
-        end
-        love.graphics.setFont(FontPrimaryMedium)
+        love.graphics.setColor(COLOR1)
+        love.graphics.setFont(self.reversedSize and FontPrimarySmall or FontPrimaryMedium)
         love.graphics.printf(self.items[i]['name'], self.x + (i - 1) % self.columns * (self.width + self.gap),
             self.y + math.floor((i - 1) / self.columns) * (self.height + self.gap) + 135,
             self.width,
             'center')
         if self.items[i]['description'] then
-            love.graphics.setFont(FontPrimarySmall)
+            love.graphics.setFont(self.reversedSize and FontPrimaryMedium or FontPrimarySmall)
             love.graphics.printf(self.items[i]['description'], self.x + (i - 1) % self.columns * (self.width + self.gap),
                 self.y + math.floor((i - 1) / self.columns) * (self.height + self.gap) + self.height - 300,
                 self.width,
