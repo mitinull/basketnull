@@ -39,6 +39,8 @@ function Menu:update(dt)
 end
 
 function Menu:render()
+    love.graphics.translate(-(self.selected - math.ceil(self.columns / 2)) * (self.gap + self.width), 0)
+
     local highlightedItmes = {}
     for i = 1, #self.hItems do
         highlightedItmes[self.hItems[i]] = true
@@ -46,11 +48,15 @@ function Menu:render()
 
     for i = 1, #self.items do
         if highlightedItmes[i] then
-            love.graphics.setColor(BASKET_COLOR)
+            love.graphics.setColor(BASKET_COLOR[1], BASKET_COLOR[2], BASKET_COLOR[3], math.max(0, 1 - math.abs(self.selected - i) * .3))
         elseif i == self.selected then
             love.graphics.setColor(COLOR5)
         else
-            love.graphics.setColor(COLOR2)
+            love.graphics.setColor(COLOR2[1], COLOR2[2], COLOR2[3], math.max(0, 1 - math.abs(self.selected - i) * .3))
+            -- love.graphics.setColor(COLOR2)
+            -- if math.abs(self.selected - i) > 1 then
+            --     love.graphics.setColor(COLOR2[1], COLOR2[2], COLOR2[3], .3)
+            -- end
         end
         love.graphics.rectangle('fill', self.x + (i - 1) % self.columns * (self.width + self.gap),
             self.y + math.floor((i - 1) / self.columns) * (self.height + self.gap), self.width,
@@ -84,4 +90,6 @@ function Menu:render()
         end
     end
     love.graphics.setColor(WHITE)
+
+    love.graphics.translate((self.selected - math.ceil(self.columns / 2)) * (self.gap + self.width), 0)
 end
