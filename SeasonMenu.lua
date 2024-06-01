@@ -1,7 +1,7 @@
 SeasonMenu = Class {}
 
 function SeasonMenu:init(selected, completedSeasons, seasons)
-    self.margin = 600
+    self.margin = 300
     self.menu = Menu(selected, seasons, completedSeasons, self.margin, VIRTUAL_HEIGHT / 3 + 475,
         (VIRTUAL_WIDTH - self.margin * 2) / 3 - 30, 550, 60, 4, true)
 end
