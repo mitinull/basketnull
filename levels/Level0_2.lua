@@ -38,7 +38,7 @@ function Level0_2:render()
     love.graphics.setColor(COLOR3)
     love.graphics.setFont(FontPrimaryMedium)
     love.graphics.printf(
-        'Move with "LEFT" and "RIGHT" keys.\nJump with "UP" key.', 0,
+        'Move with the "LEFT" and "RIGHT" keys.\nJump with the "UP" key.', 0,
         VIRTUAL_HEIGHT / 2 - 400, VIRTUAL_WIDTH, 'center')
     self.lines:render()
     self.ball:render()

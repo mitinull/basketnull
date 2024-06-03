@@ -24,7 +24,7 @@ end
 
 function Level11:render()
     BaseLevel.render(self)
-    love.graphics.setColor(BASKET_COLOR[1], BASKET_COLOR[2], BASKET_COLOR[3], .4)
+    love.graphics.setColor(COLOR3[1], COLOR3[2], COLOR3[3], .4)
     love.graphics.draw(self.arrow, 950, VIRTUAL_HEIGHT / 2 - 200, -135, .8, -.8)
     love.graphics.setColor(BASKET_COLOR)
     love.graphics.setFont(FontPrimaryMedium)
