@@ -1,0 +1,45 @@
+Level11 = Class { __includes = BaseLevel }
+
+Level11.designer = "Mitinull"
+
+function Level11.init(self, onWin)
+    BaseLevel.init(self, onWin)
+
+    self.arrow = love.graphics.newImage('sprites/arrow1.png')
+
+    self.ball = Ball(self.world, VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT / 2, BALL_RADIUS, .5, BALL_DAMPING)
+
+    self.player1 = PlayerMediumRed(self.world,
+        VIRTUAL_WIDTH - 1050,
+        VIRTUAL_HEIGHT - GROUND_HEIGHT - PlayerMediumRed.radius, 'left', 'right', 'up')
+
+    self.basket = Basket(self.world, 1000, VIRTUAL_HEIGHT / 2 + 75, 550, 500)
+    self.basket.body:setAngle(math.rad(-90))
+end
+
+function Level11.update(self, dt)
+    BaseLevel.update(self, dt)
+    self.player1:update(dt)
+end
+
+function Level11:render()
+    BaseLevel.render(self)
+    love.graphics.setColor(BASKET_COLOR[1], BASKET_COLOR[2], BASKET_COLOR[3], .4)
+    love.graphics.draw(self.arrow, 950, VIRTUAL_HEIGHT / 2 - 200, -135, .8, -.8)
+    love.graphics.setColor(BASKET_COLOR)
+    love.graphics.setFont(FontPrimaryMedium)
+    love.graphics.printf(
+        "When it's game,\nif it's not rough,\nit isn't fun!", 1300,
+        VIRTUAL_HEIGHT / 2 - 200 , VIRTUAL_WIDTH, 'left')
+    love.graphics.setFont(FontPrimarySemiSmall)
+    love.graphics.setColor(COLOR3)
+    love.graphics.printf(
+        'You can skip to the next level\nwhenever you give up :)',
+        1300,
+        VIRTUAL_HEIGHT / 2 + 150, VIRTUAL_WIDTH, 'left')
+    self.ball:render()
+    self.player1:render()
+    self.basket:render()
+    love.graphics.setColor(WHITE)
+    BaseLevel.renderCountDown(self)
+end

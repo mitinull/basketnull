@@ -11,7 +11,7 @@ function Ball:init(world, x, y, radius, bounce, damping, color)
 
     self.fixture:setRestitution(bounce)
     self.body:setAngularDamping(damping)
-    self.body:setMass(25)
+    self.body:setMass(5)
 end
 
 function Ball:render()
