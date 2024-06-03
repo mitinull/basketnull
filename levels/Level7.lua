@@ -23,21 +23,28 @@ function Level7.init(self, onWin)
         VIRTUAL_WIDTH / 8 * 7,
         VIRTUAL_HEIGHT - GROUND_HEIGHT - PlayerMediumRed.radius, 'left', 'right', 'up')
 
-    self.basket = Basket(self.world, VIRTUAL_WIDTH / 8 * 6, VIRTUAL_HEIGHT / 3, 450, 300)
+    self.basket = MovingBasket(self.world, VIRTUAL_WIDTH / 8 * 7, VIRTUAL_HEIGHT / 3, 300, 300, VIRTUAL_WIDTH / 8 * 7,
+        VIRTUAL_HEIGHT / 3 * 2, 2)
 
     self.lines = Lines(self.world, {
-        { 0,                     VIRTUAL_HEIGHT - GROUND_HEIGHT - 200, 100,                         VIRTUAL_HEIGHT - GROUND_HEIGHT },
-        { VIRTUAL_WIDTH,         VIRTUAL_HEIGHT - GROUND_HEIGHT - 200, VIRTUAL_WIDTH - 100,         VIRTUAL_HEIGHT - GROUND_HEIGHT },
-        { VIRTUAL_WIDTH / 8 * 2, VIRTUAL_HEIGHT - GROUND_HEIGHT - 200, VIRTUAL_WIDTH / 8 * 2 - 100, VIRTUAL_HEIGHT - GROUND_HEIGHT },
-        { VIRTUAL_WIDTH / 8 * 2, VIRTUAL_HEIGHT - GROUND_HEIGHT - 200, VIRTUAL_WIDTH / 8 * 2 + 100, VIRTUAL_HEIGHT - GROUND_HEIGHT },
-        { VIRTUAL_WIDTH / 8 * 4, VIRTUAL_HEIGHT - GROUND_HEIGHT - 200, VIRTUAL_WIDTH / 8 * 4 - 100, VIRTUAL_HEIGHT - GROUND_HEIGHT },
-        { VIRTUAL_WIDTH / 8 * 4, VIRTUAL_HEIGHT - GROUND_HEIGHT - 200, VIRTUAL_WIDTH / 8 * 4 + 100, VIRTUAL_HEIGHT - GROUND_HEIGHT },
-        { VIRTUAL_WIDTH / 8 * 6, VIRTUAL_HEIGHT - GROUND_HEIGHT - 200, VIRTUAL_WIDTH / 8 * 6 - 100, VIRTUAL_HEIGHT - GROUND_HEIGHT },
-        { VIRTUAL_WIDTH / 8 * 6, VIRTUAL_HEIGHT - GROUND_HEIGHT - 200, VIRTUAL_WIDTH / 8 * 6 + 100, VIRTUAL_HEIGHT - GROUND_HEIGHT },
-        { VIRTUAL_WIDTH / 8 * 2, VIRTUAL_HEIGHT - GROUND_HEIGHT - 200, VIRTUAL_WIDTH / 8 * 2,       VIRTUAL_HEIGHT / 2 },
-        { VIRTUAL_WIDTH / 8 * 4, VIRTUAL_HEIGHT - GROUND_HEIGHT - 200, VIRTUAL_WIDTH / 8 * 4,       VIRTUAL_HEIGHT / 2 },
-        { VIRTUAL_WIDTH / 8 * 6, VIRTUAL_HEIGHT - GROUND_HEIGHT - 200, VIRTUAL_WIDTH / 8 * 6,       VIRTUAL_HEIGHT / 2 },
+        { VIRTUAL_WIDTH / 8 * 2, VIRTUAL_HEIGHT - GROUND_HEIGHT - 150, VIRTUAL_WIDTH / 8 * 2, VIRTUAL_HEIGHT / 2 },
+        { VIRTUAL_WIDTH / 8 * 2, VIRTUAL_HEIGHT / 2 - 300,             VIRTUAL_WIDTH / 8 * 2, 0 },
+        { VIRTUAL_WIDTH / 8 * 4, VIRTUAL_HEIGHT - GROUND_HEIGHT - 150, VIRTUAL_WIDTH / 8 * 4, VIRTUAL_HEIGHT / 2 },
+        { VIRTUAL_WIDTH / 8 * 4, VIRTUAL_HEIGHT / 2 - 300,             VIRTUAL_WIDTH / 8 * 4, 0 },
+        { VIRTUAL_WIDTH / 8 * 6, VIRTUAL_HEIGHT - GROUND_HEIGHT - 150, VIRTUAL_WIDTH / 8 * 6, VIRTUAL_HEIGHT / 2 },
+        { VIRTUAL_WIDTH / 8 * 6, VIRTUAL_HEIGHT / 2 - 300,             VIRTUAL_WIDTH / 8 * 6, 0 },
     })
+
+    self.ramps = Lines(self.world, {
+        { 0,                     VIRTUAL_HEIGHT - GROUND_HEIGHT - 150, 100,                         VIRTUAL_HEIGHT - GROUND_HEIGHT },
+        { VIRTUAL_WIDTH,         VIRTUAL_HEIGHT - GROUND_HEIGHT - 150, VIRTUAL_WIDTH - 100,         VIRTUAL_HEIGHT - GROUND_HEIGHT },
+        { VIRTUAL_WIDTH / 8 * 2, VIRTUAL_HEIGHT - GROUND_HEIGHT - 150, VIRTUAL_WIDTH / 8 * 2 - 100, VIRTUAL_HEIGHT - GROUND_HEIGHT },
+        { VIRTUAL_WIDTH / 8 * 2, VIRTUAL_HEIGHT - GROUND_HEIGHT - 150, VIRTUAL_WIDTH / 8 * 2 + 100, VIRTUAL_HEIGHT - GROUND_HEIGHT },
+        { VIRTUAL_WIDTH / 8 * 4, VIRTUAL_HEIGHT - GROUND_HEIGHT - 150, VIRTUAL_WIDTH / 8 * 4 - 100, VIRTUAL_HEIGHT - GROUND_HEIGHT },
+        { VIRTUAL_WIDTH / 8 * 4, VIRTUAL_HEIGHT - GROUND_HEIGHT - 150, VIRTUAL_WIDTH / 8 * 4 + 100, VIRTUAL_HEIGHT - GROUND_HEIGHT },
+        { VIRTUAL_WIDTH / 8 * 6, VIRTUAL_HEIGHT - GROUND_HEIGHT - 150, VIRTUAL_WIDTH / 8 * 6 - 100, VIRTUAL_HEIGHT - GROUND_HEIGHT },
+        { VIRTUAL_WIDTH / 8 * 6, VIRTUAL_HEIGHT - GROUND_HEIGHT - 150, VIRTUAL_WIDTH / 8 * 6 + 100, VIRTUAL_HEIGHT - GROUND_HEIGHT },
+    }, BASKET_COLOR)
 end
 
 function Level7.update(self, dt)
@@ -46,13 +53,14 @@ function Level7.update(self, dt)
     self.player2:update(dt)
     self.player3:update(dt)
     self.player4:update(dt)
+    self.basket:update(dt)
 end
 
 function Level7:render()
-    love.graphics.setColor(COLOR2)
+    love.graphics.setColor(BASKET_COLOR)
     love.graphics.setFont(FontPrimaryMedium)
-    love.graphics.printf('You care more about BEING good\nthan DOING good!', 0,
-        VIRTUAL_HEIGHT / 4, VIRTUAL_WIDTH / 4 * 3, 'center')
+    love.graphics.printf('You care more about\nBEING GOOD\nthan\nDOING GOOD!', VIRTUAL_WIDTH / 4 + 50,
+        300, VIRTUAL_WIDTH / 4 * 3, 'left')
     self.ball:render()
     self.player1:render()
     self.player2:render()
@@ -62,4 +70,6 @@ function Level7:render()
     love.graphics.setColor(WHITE)
     BaseLevel.render(self)
     self.lines:render()
+    self.ramps:render()
+    BaseLevel.renderCountDown(self)
 end
