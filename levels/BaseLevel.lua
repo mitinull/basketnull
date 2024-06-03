@@ -1,11 +1,11 @@
 BaseLevel = Class {}
 
-function BaseLevel:init(onWin)
+function BaseLevel:init(onWin, groundWidth)
     self.win = onWin
 
     self.world = love.physics.newWorld(0, GRAVITY)
 
-    self.ground = Ground(self.world, GROUND_HEIGHT)
+    self.ground = Ground(self.world, GROUND_HEIGHT, groundWidth)
 
     -- walls
     local leftWallBody = love.physics.newBody(self.world, 0, 0, 'static')
