@@ -14,7 +14,7 @@ function Level0_2.init(self, onWin)
         VIRTUAL_HEIGHT - GROUND_HEIGHT - PlayerMediumRed.radius, 'left', 'right', 'up')
 
     self.basket = Basket(self.world, 1000, VIRTUAL_HEIGHT - GROUND_HEIGHT - 80, 150, 150)
-    self.basket.body:setAngle(math.rad(90))
+    self.basket.body:setAngle(math.rad(-90))
 
     self.lines = Lines(self.world, {
         { VIRTUAL_WIDTH / 2 - 500, VIRTUAL_HEIGHT * 3 / 4, VIRTUAL_WIDTH / 2 + 500, VIRTUAL_HEIGHT * 3 / 4 }
