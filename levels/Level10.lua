@@ -7,7 +7,7 @@ function Level10.init(self, onWin)
 
     self.arrow = love.graphics.newImage('sprites/arrow1.png')
 
-    self.ball = Ball(self.world, VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT / 2, BALL_RADIUS, .5, BALL_DAMPING)
+    self.ball = Ball(self.world, VIRTUAL_WIDTH - 1050, VIRTUAL_HEIGHT / 2, BALL_RADIUS, .5, BALL_DAMPING)
 
     self.player1 = PlayerMediumRed(self.world,
         VIRTUAL_WIDTH - 1050,
