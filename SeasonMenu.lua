@@ -1,9 +1,9 @@
 SeasonMenu = Class {}
 
 function SeasonMenu:init(selected, completedSeasons, seasons)
-    self.margin = 300
-    self.menu = Menu(selected, seasons, completedSeasons, self.margin, VIRTUAL_HEIGHT / 3 + 475,
-        (VIRTUAL_WIDTH - self.margin * 2) / 3 - 30, 550, 60, 4, true)
+    local cardWidth = 1000
+    self.menu = Menu(selected, seasons, completedSeasons, -1750, VIRTUAL_HEIGHT / 3 + 475,
+        1250, 550, 60, 5, true)
 end
 
 function SeasonMenu:update(dt)
@@ -19,7 +19,7 @@ function SeasonMenu:render()
     love.graphics.setFont(FontPrimarySmall)
     love.graphics.setColor(COLOR4)
     love.graphics.printf('Press "ENTER" to select. Press "LEFT" or "RIGHT" to navigate.',
-        self.margin, VIRTUAL_HEIGHT / 3 + 335, VIRTUAL_WIDTH - self.margin * 2, 'center')
+        0, VIRTUAL_HEIGHT / 3 + 335, VIRTUAL_WIDTH, 'center')
 
     -- love.graphics.setFont(FontPrimarySmall)
     -- love.graphics.setColor(COLOR3)

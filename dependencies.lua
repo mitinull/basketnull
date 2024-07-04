@@ -28,6 +28,7 @@ require 'levels/Level10'
 require 'levels/Level11'
 require 'levels/Level12'
 require 'levels/Level13'
+require 'levels/Level14'
 
 require 'entities/player/Player'
 require 'entities/player/PlayerBase'
