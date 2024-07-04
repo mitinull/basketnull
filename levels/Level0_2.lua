@@ -10,10 +10,10 @@ function Level0_2.init(self, onWin)
     self.ball = Ball(self.world, VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT / 2, BALL_RADIUS, .5, BALL_DAMPING)
 
     self.player1 = PlayerMediumRed(self.world,
-        VIRTUAL_WIDTH - 1050,
+        VIRTUAL_WIDTH - 1150,
         VIRTUAL_HEIGHT - GROUND_HEIGHT - PlayerMediumRed.radius, 'left', 'right', 'up')
 
-    self.basket = Basket(self.world, 1000, VIRTUAL_HEIGHT - GROUND_HEIGHT - 80, 150, 150)
+    self.basket = Basket(self.world, 1150, VIRTUAL_HEIGHT - GROUND_HEIGHT - 80, 150, 150)
     self.basket.body:setAngle(math.rad(-90))
 
     self.lines = Lines(self.world, {
@@ -29,7 +29,7 @@ end
 function Level0_2:render()
     BaseLevel.render(self)
     love.graphics.setColor(BASKET_COLOR[1], BASKET_COLOR[2], BASKET_COLOR[3], .4)
-    love.graphics.draw(self.arrow, 810, VIRTUAL_HEIGHT - GROUND_HEIGHT - 215, -90, .35, .35)
+    love.graphics.draw(self.arrow, 960, VIRTUAL_HEIGHT - GROUND_HEIGHT - 215, -90, .35, .35)
     love.graphics.setColor(BASKET_COLOR)
     love.graphics.setFont(FontPrimarySmall)
     love.graphics.printf(
