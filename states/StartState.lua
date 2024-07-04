@@ -52,8 +52,8 @@ function StartState:enter(params)
     end
 
     if params then
-        if params.level then
-            goToLevelMenu(params.season, params.level)
+        if params.level - 1 == #seasons[params.season]['levels'] then
+            goToSeasonMenu(params.season + 1)
         else
             goToLevelMenu(params.season, params.level)
         end
