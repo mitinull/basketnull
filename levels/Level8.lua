@@ -40,11 +40,11 @@ end
 function Level8:render()
     love.graphics.setColor(BASKET_COLOR)
     love.graphics.setFont(FontPrimaryMedium)
-    love.graphics.printf('How many RESTARTS\ndo you need?',
-        VIRTUAL_WIDTH / 6 * 4, VIRTUAL_HEIGHT / 2 + 100, VIRTUAL_WIDTH / 6 * 2, 'center')
+    love.graphics.printf('MISTAKES ARE PROOF\nTHAT YOU ARE TRYING.',
+        VIRTUAL_WIDTH / 6 * 4, VIRTUAL_HEIGHT / 2 + 150, VIRTUAL_WIDTH / 6 * 2, 'center')
     love.graphics.setColor(COLOR3)
-    love.graphics.printf('Press "R"\nto restart the level!',
-        VIRTUAL_WIDTH / 6 * 4, VIRTUAL_HEIGHT / 2 + 350, VIRTUAL_WIDTH / 6 * 2, 'center')
+    love.graphics.printf('Press "R" to RETRY!',
+        VIRTUAL_WIDTH / 6 * 4, VIRTUAL_HEIGHT / 2 + 600, VIRTUAL_WIDTH / 6 * 2, 'center')
 
     love.graphics.setColor(COLOR9)
     love.graphics.printf('Move the BLUE PLAYER with "A", "D" and "W"!', 0,
