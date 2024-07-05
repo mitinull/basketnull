@@ -27,16 +27,22 @@ function Level9:render()
     -- love.graphics.setColor(BASKET_COLOR[1], BASKET_COLOR[2], BASKET_COLOR[3], .4)
     -- love.graphics.draw(self.arrow, 810, VIRTUAL_HEIGHT - GROUND_HEIGHT - 380, -90, .4, .4)
     love.graphics.setColor(BASKET_COLOR)
-    love.graphics.setFont(FontPrimaryMedium)
+    love.graphics.setFont(FontPrimaryLarge)
     love.graphics.printf(
-        'This is an OPEN SOURCE project.', 0,
+        'OPEN SOURCE', 0,
         VIRTUAL_HEIGHT / 2 - 350, VIRTUAL_WIDTH, 'center')
     love.graphics.setFont(FontPrimarySemiSmall)
     love.graphics.setColor(COLOR3)
     love.graphics.printf(
-        'You can go and change this level on github.',
+        'You can contribute to this game incredably easy.\n Clone the project from github and change this level.\nYour level has your name and may move to other chapters!',
         0,
-        VIRTUAL_HEIGHT / 2 - 50, VIRTUAL_WIDTH, 'center')
+        VIRTUAL_HEIGHT / 2 + 200, VIRTUAL_WIDTH, 'center')
+    love.graphics.setFont(FontPrimarySemiSmall)
+    love.graphics.setColor(PLAYER_COLOR)
+    love.graphics.printf(
+        'Github.com/mitinull/basketnull',
+        0,
+        VIRTUAL_HEIGHT / 2, VIRTUAL_WIDTH, 'center')
     -- self.ball:render()
     -- self.player1:render()
     -- self.basket:render()
