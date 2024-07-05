@@ -15,7 +15,7 @@ function StartState:enter(params)
         {
             ['name'] = 'Chapter 2',
             ['description'] = 'Creativity!',
-            ['levels'] = { Level5, Level3 }
+            ['levels'] = { Level15, Level16, Level3 }
         },
         {
             ['name'] = 'Chapter 3',
@@ -25,7 +25,7 @@ function StartState:enter(params)
         {
             ['name'] = 'Chapter 4',
             ['description'] = 'Test Chamber!',
-            ['levels'] = { Level14 }
+            ['levels'] = { Level16 }
         }
     }
 
