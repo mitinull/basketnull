@@ -34,7 +34,7 @@ function Level9:render()
     love.graphics.setFont(FontPrimarySemiSmall)
     love.graphics.setColor(COLOR3)
     love.graphics.printf(
-        'You can contribute to this game incredably easy.\n Clone the project from github and change this level.\nYour level has your name and may move to other chapters!',
+        'You can contribute to this game incredibly easily.\nSimply clone the project from GitHub and modify this level.\nYour name will be attached to your level, which may move into other chapters.',
         0,
         VIRTUAL_HEIGHT / 2 + 200, VIRTUAL_WIDTH, 'center')
     love.graphics.setFont(FontPrimarySemiSmall)
