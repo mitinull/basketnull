@@ -76,5 +76,4 @@ function PlayerBase:render()
     end
     love.graphics.setColor(WHITE)
     love.graphics.draw(self.faceSprite, self.body:getX(), self.body:getY(), 0, .3, .3, 316, 300)
-    love.graphics.print(self.shape:getRadius(), 100, 100)
 end
