@@ -45,6 +45,7 @@ function PlayerBase:init(world, x, y, leftKey, rightKey, jumpKey, speed, jump, g
 
     self.body:setMass(self.mass)
     self.body:setGravityScale(self.gScale)
+    self.body:setFixedRotation(true)
 end
 
 function PlayerBase:update(dt)
