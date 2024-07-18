@@ -11,7 +11,7 @@ function Level14.init(self, onWin)
         VIRTUAL_WIDTH - 1050,
         VIRTUAL_HEIGHT - GROUND_HEIGHT - PlayerMediumRed.radius, 'left', 'right', 'up')
 
-    self.basket = Basket(self.world, 1000, VIRTUAL_HEIGHT - GROUND_HEIGHT - 108, 400, 200)
+    self.basket = Basket(self.world, 1000, VIRTUAL_HEIGHT - GROUND_HEIGHT - 108, 600, 200)
 
     self.lines = Lines(self.world, {
         { VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT / 2, VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT - GROUND_HEIGHT },
