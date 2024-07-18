@@ -14,7 +14,7 @@ function Lines:init(world, points, color)
         table.insert(self.fixtures, love.physics.newFixture(self.body, self.shapes[i]))
     end
 
-    self.color = color or BASKET_COLOR
+    self.color = color or COLOR3
 end
 
 function Lines:render()

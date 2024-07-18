@@ -3,12 +3,29 @@ StartState = Class { __includes = BaseState }
 function StartState:enter(params)
     local seasons = {
         {
-            ['name'] = 'Season 1',
-            ['levels'] = { Level1, Level2, Level3, Level4, Level5 },
+            ['name'] = 'Chapter 0',
+            ['description'] = 'Warm Up!',
+            ['levels'] = { Level00, Level0_2, Level14, Level0_4, Level0_5 }
         },
         {
-            ['name'] = 'Season 2',
-            ['levels'] = { Level6, Level7, Level8 }
+            ['name'] = 'Chapter 1',
+            ['description'] = 'Time to Play!',
+            ['levels'] = { Level10, Level13, Level11, Level12, Level7, Level8, },
+        },
+        {
+            ['name'] = 'Chapter 2',
+            ['description'] = 'Creativity!',
+            ['levels'] = { Level15, Level16, Level18 }
+        },
+        {
+            ['name'] = 'Chapter 3',
+            ['description'] = 'Your Chapter!',
+            ['levels'] = { Level9 }
+        },
+        {
+            ['name'] = 'Chapter 4',
+            ['description'] = 'Test Chamber!',
+            ['levels'] = { Level18, Level17 }
         }
     }
 
@@ -35,8 +52,8 @@ function StartState:enter(params)
     end
 
     if params then
-        if params.level then
-            goToLevelMenu(params.season, params.level)
+        if params.level - 1 == #seasons[params.season]['levels'] then
+            goToSeasonMenu(params.season + 1)
         else
             goToLevelMenu(params.season, params.level)
         end

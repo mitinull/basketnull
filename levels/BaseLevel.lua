@@ -1,16 +1,16 @@
 BaseLevel = Class {}
 
-function BaseLevel:init(onWin)
+function BaseLevel:init(onWin, groundWidth)
     self.win = onWin
 
     self.world = love.physics.newWorld(0, GRAVITY)
 
-    self.ground = Ground(self.world, GROUND_HEIGHT)
+    self.ground = Ground(self.world, GROUND_HEIGHT, groundWidth)
 
     -- walls
     local leftWallBody = love.physics.newBody(self.world, 0, 0, 'static')
     local rightWallBody = love.physics.newBody(self.world, VIRTUAL_WIDTH, 0, 'static')
-    local wallShape = love.physics.newEdgeShape(0, 0, 0, VIRTUAL_HEIGHT)
+    local wallShape = love.physics.newEdgeShape(0, -VIRTUAL_HEIGHT, 0, VIRTUAL_HEIGHT)
     love.physics.newFixture(leftWallBody, wallShape)
     love.physics.newFixture(rightWallBody, wallShape)
 
@@ -32,6 +32,10 @@ end
 
 function BaseLevel:render()
     self.ground:render()
+    love.graphics.setColor(WHITE)
+end
+
+function BaseLevel:renderCountDown()
     love.graphics.setFont(FontPrimaryMedium)
     love.graphics.setColor(BASKET_COLOR)
     if self.ballInBasketTimer > 0 then
@@ -39,5 +43,4 @@ function BaseLevel:render()
             self.basket.body:getX() - self.basket.width / 2, self.basket.body:getY() - 50,
             self.basket.width, 'center')
     end
-    love.graphics.setColor(WHITE)
 end

@@ -52,10 +52,10 @@ function PlayState:render()
         love.graphics.setColor(WHITE)
     end
 
-    love.graphics.setColor(COLOR3)
+    love.graphics.setColor(COLOR5)
     love.graphics.setFont(FontPrimarySmall)
-    love.graphics.printf('Menu[q]', 0, 40, VIRTUAL_WIDTH - 60, 'right')
+    love.graphics.printf('Menu[Q]', 0, 40, VIRTUAL_WIDTH - 60, 'right')
     love.graphics.setFont(FontPrimaryMedium)
-    love.graphics.printf('Restart[r]', 0, 120, VIRTUAL_WIDTH - 60, 'right')
+    love.graphics.printf('Restart[R]', 0, 120, VIRTUAL_WIDTH - 60, 'right')
     love.graphics.setColor(WHITE)
 end
