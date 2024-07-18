@@ -11,6 +11,7 @@ function PlayerBase:init(world, x, y, leftKey, rightKey, jumpKey, speed, jump, g
     self.mass = mass
     self.color = color
     self.sh = shape or 'circle'
+    self.face = 'kid'
 
     self.body = love.physics.newBody(world, x, y, 'dynamic')
 
@@ -34,6 +35,10 @@ function PlayerBase:init(world, x, y, leftKey, rightKey, jumpKey, speed, jump, g
             0, self.radius,
             -self.radius * math.sin(math.pi / 4), self.radius * math.sin(math.pi / 4))
         self.body:setAngle(math.rad(45 / 2))
+    end
+
+    if self.face == 'kid' then
+        self.faceSprite = love.graphics.newImage('sprites/face2.png')
     end
 
     self.fixture = love.physics.newFixture(self.body, self.shape)
@@ -69,4 +74,6 @@ function PlayerBase:render()
         love.graphics.polygon('fill', self.body:getWorldPoints(self.shape:getPoints()))
     end
     love.graphics.setColor(WHITE)
+    love.graphics.draw(self.faceSprite, self.body:getX(), self.body:getY(), 0, .3, .3, 316, 300)
+    love.graphics.print(self.shape:getRadius(), 100, 100)
 end
