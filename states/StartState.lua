@@ -22,11 +22,11 @@ function StartState:enter(params)
             ['description'] = 'Your Chapter!',
             ['levels'] = { Level9 }
         },
-        {
-            ['name'] = 'Chapter 4',
-            ['description'] = 'Test Chamber!',
-            ['levels'] = { Level18, Level17 }
-        }
+        -- {
+        --     ['name'] = 'Chapter 4',
+        --     ['description'] = 'Test Chamber!',
+        --     ['levels'] = { Level18, Level17 }
+        -- }
     }
 
     local goToSeasonMenu = function(s)
