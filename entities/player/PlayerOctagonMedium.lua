@@ -5,5 +5,5 @@ PlayerOctagonMedium.mass = 200
 
 function PlayerOctagonMedium.init(self, world, x, y, leftKey, rightKey, jumpKey, color)
     PlayerBase.init(self, world, x, y, leftKey, rightKey, jumpKey, self.speed, self.jump,
-        self.gScale, self.radius * 1.1, self.mass, color, 'octagon')
+        self.gScale, self.radius * 1.1, self.mass, color, 'octagon', true)
 end

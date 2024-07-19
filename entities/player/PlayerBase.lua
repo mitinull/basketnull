@@ -1,6 +1,6 @@
 PlayerBase = Class {}
 
-function PlayerBase:init(world, x, y, leftKey, rightKey, jumpKey, speed, jump, gScale, radius, mass, color, shape)
+function PlayerBase:init(world, x, y, leftKey, rightKey, jumpKey, speed, jump, gScale, radius, mass, color, shape, sfr)
     self.lk = leftKey
     self.rk = rightKey
     self.jk = jumpKey
@@ -45,7 +45,7 @@ function PlayerBase:init(world, x, y, leftKey, rightKey, jumpKey, speed, jump, g
 
     self.body:setMass(self.mass)
     self.body:setGravityScale(self.gScale)
-    self.body:setFixedRotation(true)
+    self.body:setFixedRotation(sfr or false)
 end
 
 function PlayerBase:update(dt)
