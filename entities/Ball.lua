@@ -10,7 +10,7 @@ function Ball:init(world, x, y, radius, bounce, damping, color)
     self.fixture = love.physics.newFixture(self.body, self.shape)
 
     self.fixture:setRestitution(bounce)
-    -- self.body:setAngularDamping(damping*10)
+    self.body:setAngularDamping(damping)
     self.body:setMass(5)
 
     self.sprite = love.graphics.newImage('sprites/ball1.png')
