@@ -46,9 +46,10 @@ function Level8:render()
     love.graphics.printf('Press "R" to RETRY!',
         VIRTUAL_WIDTH / 6 * 4, VIRTUAL_HEIGHT / 2 + 600, VIRTUAL_WIDTH / 6 * 2, 'center')
 
+    -- love.graphics.setFont(FontPrimarySemiSmall)
     love.graphics.setColor(COLOR9)
     love.graphics.printf('Move the BLUE PLAYER with "A", "D" and "W"!', 0,
-        VIRTUAL_HEIGHT / 8, VIRTUAL_WIDTH / 3 * 2, 'center')
+        VIRTUAL_HEIGHT * .7, VIRTUAL_WIDTH / 3 * 2, 'center')
     self.ball:render()
     self.player1:render()
     self.player2:render()
