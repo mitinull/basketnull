@@ -32,6 +32,9 @@ end
 
 function BaseLevel:render()
     self.ground:render()
+    love.graphics.setFont(FontPrimarySmall)
+    love.graphics.setColor(COLOR3)
+    love.graphics.print("Level d. : " .. self.designer, 40, 120)
     love.graphics.setColor(WHITE)
 end
 
