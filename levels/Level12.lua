@@ -13,7 +13,7 @@ function Level12.init(self, onWin)
 
     self.player2 = PlayerMediumRed(self.world,
         VIRTUAL_WIDTH / 2 - 600,
-        VIRTUAL_HEIGHT - GROUND_HEIGHT - PlayerMediumRed.radius, nil, nil, nill)
+        VIRTUAL_HEIGHT - GROUND_HEIGHT - PlayerMediumRed.radius, nil, nil, nil)
 
     self.basket = MovingBasket(self.world, 900, VIRTUAL_HEIGHT / 2 + 300, 400, 300, 1500, VIRTUAL_HEIGHT / 2 + 300, 2)
 
