@@ -15,14 +15,14 @@ function Level12.init(self, onWin)
         VIRTUAL_WIDTH / 2 - 600,
         VIRTUAL_HEIGHT - GROUND_HEIGHT - PlayerMediumRed.radius, nil, nil, nil)
 
-    self.basket = MovingBasket(self.world, 900, VIRTUAL_HEIGHT / 2 + 300, 400, 300, 1500, VIRTUAL_HEIGHT / 2 + 300, 2)
+    self.basket = MovingBasket(self.world, 900, VIRTUAL_HEIGHT / 2 + 400, 400, 300, 1500, VIRTUAL_HEIGHT / 2 + 400, 2)
 
     self.lines = Lines(self.world,
         {
-            { VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT / 2 - 350, VIRTUAL_WIDTH / 2,   VIRTUAL_HEIGHT - GROUND_HEIGHT },
-            { VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT / 2 - 350, 600,                 VIRTUAL_HEIGHT / 2 - 50 },
-            { VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT / 2 - 350, VIRTUAL_WIDTH - 600, VIRTUAL_HEIGHT / 2 - 650 },
-            { VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT / 2 - 350, VIRTUAL_WIDTH - 600, VIRTUAL_HEIGHT / 2 - 50 },
+            { VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT / 2 - 250, VIRTUAL_WIDTH / 2,   VIRTUAL_HEIGHT - GROUND_HEIGHT },
+            { VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT / 2 - 250, 600,                 VIRTUAL_HEIGHT / 2 + 50 },
+            { VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT / 2 - 250, VIRTUAL_WIDTH - 600, VIRTUAL_HEIGHT / 2 - 550 },
+            { VIRTUAL_WIDTH / 2, VIRTUAL_HEIGHT / 2 - 250, VIRTUAL_WIDTH - 600, VIRTUAL_HEIGHT / 2 + 50 },
         })
 
     self.steps = Lines(self.world,
@@ -51,7 +51,7 @@ function Level12:render()
     love.graphics.setColor(BASKET_COLOR)
     love.graphics.setFont(FontPrimaryMedium)
     love.graphics.printf(
-        "YOU CAN DO IT!", VIRTUAL_WIDTH / 2 + 175,
+        "YOU CAN DO IT!", VIRTUAL_WIDTH / 2 + 200,
         VIRTUAL_HEIGHT / 2 + 200, VIRTUAL_WIDTH, 'left')
     love.graphics.setFont(FontPrimarySemiSmall)
     love.graphics.setColor(COLOR3)

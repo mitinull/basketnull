@@ -5,12 +5,12 @@ function StartState:enter(params)
         {
             ['name'] = 'Chapter 0',
             ['description'] = 'Warm Up!',
-            ['levels'] = { Level00, Level0_2, Level21, Level14, Level20, Level0_4, Level0_5 }
+            ['levels'] = { Level00, Level0_2, Level21, Level14, Level0_4, Level0_5 }
         },
         {
             ['name'] = 'Chapter 1',
             ['description'] = 'Time to Play!',
-            ['levels'] = { Level10, Level13, Level11, Level12, Level7, Level8, },
+            ['levels'] = { Level10, Level13, Level11, Level20, Level12, Level7, Level8, },
         },
         {
             ['name'] = 'Chapter 2',

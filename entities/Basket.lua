@@ -19,10 +19,20 @@ function Basket:init(world, x, y, width, height, type)
 end
 
 function Basket:ballIsInside(ball)
-    return ball.body:getX() < self.body:getX() + self.width / 2 and
-        ball.body:getX() > self.body:getX() - self.width / 2 and
-        ball.body:getY() < self.body:getY() + self.height / 2 and
-        ball.body:getY() > self.body:getY() - self.height / 2
+    -- Get the relative position of the ball in the basket's local coordinate system
+    local angle = self.body:getAngle()
+    local cosAngle = math.cos(angle)
+    local sinAngle = math.sin(angle)
+
+    -- Compute the relative position
+    local dx = ball.body:getX() - self.body:getX()
+    local dy = ball.body:getY() - self.body:getY()
+    local localX = cosAngle * dx + sinAngle * dy
+    local localY = -sinAngle * dx + cosAngle * dy
+
+    -- Check if the ball is inside the rotated basket
+    return localX > -self.width / 2 and localX < self.width / 2 and
+        localY > -self.height / 2 and localY < self.height / 2
 end
 
 function Basket:render()

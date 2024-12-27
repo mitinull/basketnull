@@ -17,7 +17,7 @@ function LevelsMenu:init(selected, passedLevels, seasonIndex, season, onQuit)
         })
     end
 
-    self.menu = Menu(selected, items, passedLevels, 410, VIRTUAL_HEIGHT / 2, 550, 750, 80, 6)
+    self.menu = Menu(selected, items, passedLevels, -1400, VIRTUAL_HEIGHT / 2, 550, 750, 80, 10)
 end
 
 function LevelsMenu:update(dt)
