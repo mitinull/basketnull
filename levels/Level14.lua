@@ -25,21 +25,21 @@ end
 
 function Level14:render()
     BaseLevel.render(self)
-    love.graphics.setColor(COLOR3)
+    love.graphics.setColor(BASKET_COLOR)
+    love.graphics.setFont(FontPrimaryLarge)
+    love.graphics.printf(
+        string.upper('life is\nto short\nto play it\nsafe!'), 400,
+        VIRTUAL_HEIGHT - GROUND_HEIGHT - 400, VIRTUAL_HEIGHT, 'left', -math.pi / 2)
+    love.graphics.setColor(PLAYER_COLOR)
     love.graphics.setFont(FontPrimaryMedium)
     love.graphics.printf(
-        'YOU PROBABELY NEED A RESTART!\nPRESS "R" TO RESTART!', 0,
-        VIRTUAL_HEIGHT / 2 - 550, VIRTUAL_WIDTH, 'center')
-    love.graphics.setColor(PLAYER_COLOR)
-    love.graphics.setFont(FontPrimarySemiSmall)
-    love.graphics.printf(
-        'YOU PROBABELY NEED A RESTART!\nPRESS "R" TO RESTART!', VIRTUAL_WIDTH - 2000,
+        'Need a restart?\n Press "r" to restart!', VIRTUAL_WIDTH - 2000,
         VIRTUAL_HEIGHT / 2 + 200, 2000, 'center')
-    love.graphics.setColor(BASKET_COLOR)
-    love.graphics.setFont(FontPrimarySemiSmall)
-    love.graphics.printf(
-        'YOU PROBABELY NEED A RESTART!\nPRESS "R" TO RESTART!', 0,
-        VIRTUAL_HEIGHT / 2 + 200, 2000, 'center')
+    -- love.graphics.setColor(BASKET_COLOR)
+    -- love.graphics.setFont(FontPrimarySemiSmall)
+    -- love.graphics.printf(
+    --     'YOU PROBABELY NEED A RESTART!\nPRESS "R" TO RESTART!', 0,
+    --     VIRTUAL_HEIGHT / 2 + 200, 2000, 'center')
     self.lines:render()
     self.ball:render()
     self.player1:render()
