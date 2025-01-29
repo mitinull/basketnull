@@ -52,4 +52,5 @@ require 'entities/Lines'
 FontPrimarySmall = love.graphics.newFont('fonts/angrybirds.ttf', 64)
 FontPrimaryMedium = love.graphics.newFont('fonts/angrybirds.ttf', 96)
 FontPrimarySemiSmall = love.graphics.newFont('fonts/angrybirds.ttf', 82)
+FontPrimarySemiLarge = love.graphics.newFont('fonts/angrybirds.ttf', 196)
 FontPrimaryLarge = love.graphics.newFont('fonts/angrybirds.ttf', 256)

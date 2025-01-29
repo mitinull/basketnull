@@ -26,9 +26,9 @@ end
 function Level14:render()
     BaseLevel.render(self)
     love.graphics.setColor(BASKET_COLOR)
-    love.graphics.setFont(FontPrimaryLarge)
+    love.graphics.setFont(FontPrimarySemiLarge)
     love.graphics.printf(
-        string.upper('life is\nto short\nto play it\nsafe!'), 400,
+        string.upper('life is\nto short\nto play it\nsafe!'), 535,
         VIRTUAL_HEIGHT - GROUND_HEIGHT - 400, VIRTUAL_HEIGHT, 'left', -math.pi / 2)
     love.graphics.setColor(PLAYER_COLOR)
     love.graphics.setFont(FontPrimaryMedium)

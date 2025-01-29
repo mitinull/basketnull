@@ -29,14 +29,14 @@ function Level00:render()
     love.graphics.setColor(BASKET_COLOR)
     love.graphics.setFont(FontPrimaryMedium)
     love.graphics.printf(
-        'WELCOME TO YOUR JOURNEY!\nKEEP THE BALL IN THE BASKET FOR 3 SECONDS!', 0,
-        VIRTUAL_HEIGHT / 2 - 350, VIRTUAL_WIDTH, 'center')
+        'KEEP THE BALL IN THE BASKET\nFOR 3 SECONDS!', 850,
+        VIRTUAL_HEIGHT / 2 - 350, VIRTUAL_WIDTH, 'left')
     love.graphics.setFont(FontPrimarySemiSmall)
     love.graphics.setColor(COLOR3)
     love.graphics.printf(
-        'Move with the "LEFT", "RIGHT" and "UP" keys.\nPress "R" to restart the level.\nPress "Q" to go back to the menu.',
-        0,
-        VIRTUAL_HEIGHT / 2 - 50, VIRTUAL_WIDTH, 'center')
+        'Move with the "LEFT", "RIGHT" and "UP" keys.',
+        850,
+        VIRTUAL_HEIGHT / 2, VIRTUAL_WIDTH, 'left')
     self.ball:render()
     self.player1:render()
     self.basket:render()
