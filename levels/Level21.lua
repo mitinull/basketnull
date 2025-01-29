@@ -16,7 +16,7 @@ function Level21.init(self, onWin)
     self.basket.body:setAngle(math.rad(90))
 
     self.lines = Lines(self.world, {
-        { VIRTUAL_WIDTH / 2 - 900, VIRTUAL_HEIGHT * 2 / 3, VIRTUAL_WIDTH / 2 + 500, VIRTUAL_HEIGHT * 2 / 3 }
+        { VIRTUAL_WIDTH / 2 - 900, VIRTUAL_HEIGHT * 2 / 3, VIRTUAL_WIDTH / 2 + 200, VIRTUAL_HEIGHT * 2 / 3 }
     })
 end
 
