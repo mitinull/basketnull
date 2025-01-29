@@ -45,7 +45,7 @@ function Level0_5:render()
     love.graphics.setColor(BASKET_COLOR)
     love.graphics.setFont(FontPrimaryMedium)
     love.graphics.printf(
-        'IN THIS WORLD OF OVERRATED PLEASURES AND UNDERRATED TREASURES,', 0,
+        'In this WORLD of OVERRATED PLEASURES and UNDERRATED TREASURES,', 0,
         VIRTUAL_HEIGHT / 2 - 475, VIRTUAL_WIDTH, 'center')
 
     love.graphics.setColor(COLOR9)
