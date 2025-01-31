@@ -8,7 +8,7 @@ function Level0_4.init(self, onWin)
     self.ball = Ball(self.world, 300, 300, BALL_RADIUS, .5, BALL_DAMPING)
 
     self.player1 = PlayerMediumRed(self.world,
-        VIRTUAL_WIDTH - 1050,
+        VIRTUAL_WIDTH / 2 + 950,
         VIRTUAL_HEIGHT - GROUND_HEIGHT - PlayerMediumRed.radius, 'left', 'right', 'up')
 
     self.basket = Basket(self.world, 1000, VIRTUAL_HEIGHT - GROUND_HEIGHT - 108, 400, 200)
@@ -23,7 +23,9 @@ function Level0_4.init(self, onWin)
 
     self.stairs = Lines(self.world, {
         { VIRTUAL_WIDTH / 2 + 300,  VIRTUAL_HEIGHT / 2 + 200, VIRTUAL_WIDTH / 2 + 600,  VIRTUAL_HEIGHT / 2 + 200 },
+        { VIRTUAL_WIDTH / 2 + 300,  VIRTUAL_HEIGHT / 2 + 700, VIRTUAL_WIDTH / 2 + 600,  VIRTUAL_HEIGHT / 2 + 700 },
         { VIRTUAL_WIDTH / 2 + 800,  VIRTUAL_HEIGHT / 2 + 450, VIRTUAL_WIDTH / 2 + 1100, VIRTUAL_HEIGHT / 2 + 450 },
+        { VIRTUAL_WIDTH / 2 + 1300, VIRTUAL_HEIGHT / 2 + 200, VIRTUAL_WIDTH / 2 + 1600, VIRTUAL_HEIGHT / 2 + 200 },
         { VIRTUAL_WIDTH / 2 + 1300, VIRTUAL_HEIGHT / 2 + 700, VIRTUAL_WIDTH / 2 + 1600, VIRTUAL_HEIGHT / 2 + 700 },
     }, COLOR5)
 end
@@ -35,17 +37,16 @@ end
 
 function Level0_4:render()
     BaseLevel.render(self)
-    love.graphics.setColor(BASKET_COLOR[1], BASKET_COLOR[2], BASKET_COLOR[3], .4)
-    love.graphics.setColor(COLOR3)
-    love.graphics.setFont(FontPrimaryMedium)
-    love.graphics.printf(
-        'Press "R" to try again!', 0,
-        VIRTUAL_HEIGHT / 2 - 290, VIRTUAL_WIDTH, 'center')
     love.graphics.setColor(BASKET_COLOR)
     love.graphics.setFont(FontPrimaryMedium)
     love.graphics.printf(
-        '“BE YOURSELF; EVERYONE ELSE IS ALREADY TAKEN.”', 0,
-        VIRTUAL_HEIGHT / 2 - 450, VIRTUAL_WIDTH, 'center')
+        'BE YOURSELF;\nEVERYONE ELSE IS ALREADY TAKEN.', 250,
+        VIRTUAL_HEIGHT / 2 - 450, VIRTUAL_WIDTH, 'left')
+    love.graphics.setColor(COLOR3)
+    love.graphics.setFont(FontPrimaryMedium)
+    love.graphics.printf(
+        'Press "R" to try again!', 250,
+        VIRTUAL_HEIGHT / 2 - 200, VIRTUAL_WIDTH, 'left')
     self.lines:render()
     self.ramps:render()
     self.stairs:render()
