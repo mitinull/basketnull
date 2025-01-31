@@ -1,13 +1,13 @@
 Lines = Class {}
 
 function Lines:init(world, points, color)
-    self.body = love.physics.newBody(world, 0, 0, 'static')
-
-
     self.shapes = {}
     for i = 1, #points do
         table.insert(self.shapes, love.physics.newEdgeShape(points[i][1], points[i][2], points[i][3], points[i][4]))
     end
+
+    self.body = love.physics.newBody(world, 0, 0, 'static')
+    self.body:setUserData({ name = 'lines', shapes = self.shapes })
 
     self.fixtures = {}
     for i = 1, #points do

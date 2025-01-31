@@ -5,6 +5,7 @@ function Ground:init(world, height, groundWidth)
     self.width = groundWidth or VIRTUAL_WIDTH
 
     self.body = love.physics.newBody(world, 0, VIRTUAL_HEIGHT - self.height, 'static')
+    self.body:setUserData({ name = 'ground' })
 
     -- edge shape Box2D provides, perfect for ground
     self.shape = love.physics.newEdgeShape(0, 0, self.width, 0)

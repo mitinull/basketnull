@@ -8,6 +8,7 @@ function Basket:init(world, x, y, width, height, type)
     self.height = height
 
     self.body = love.physics.newBody(world, x, y, type or 'static')
+    self.body:setUserData({ name = 'basket' })
 
     self.leftShape = love.physics.newEdgeShape(-width / 2, -height / 2, -width / 2, height / 2)
     self.rightShape = love.physics.newEdgeShape(width / 2, -height / 2, width / 2, height / 2)

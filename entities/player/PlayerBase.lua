@@ -1,6 +1,43 @@
 PlayerBase = Class {}
 
+local function isPlayerCollidingWithLine(playerBody, playerShape, linesBody, lineShape)
+    -- Get world coordinates of the line segment
+    local x1, y1, x2, y2 = linesBody:getWorldPoints(lineShape:getPoints())
+    -- Get player's position and radius
+    local px, py = playerBody:getPosition()
+    local pr = playerShape:getRadius()
+
+    -- offsets
+    local offset1 = 60 -- player collision offset
+    local offset2 = 50 -- line should be this much bellow player's y to be able to jump
+
+    -- Vector from line start to end
+    local lineDX, lineDY = x2 - x1, y2 - y1
+    local lineLengthSquared = lineDX * lineDX + lineDY * lineDY
+
+    -- Avoid division by zero in case of a degenerate line (zero length)
+    if lineLengthSquared == 0 then
+        return (px - x1) ^ 2 + (py - y1) ^ 2 <= pr * pr
+    end
+
+    -- Projection factor "t" (clamped between 0 and 1 to stay within the segment)
+    local t = ((px - x1) * lineDX + (py - y1) * lineDY) / lineLengthSquared
+    t = math.max(0, math.min(1, t)) -- Clamping to stay in segment range
+
+    -- Compute the closest point on the segment
+    local closestX = x1 + t * lineDX
+    local closestY = y1 + t * lineDY
+
+    -- Compute distance from circle center to the closest point
+    local distSquared = (px - closestX) ^ 2 + (py - closestY) ^ 2
+
+    -- If the distance is less than or equal to the radius squared, collision occurs
+    return distSquared <= pr * pr + offset1 and closestY > py + offset2
+end
+
+
 function PlayerBase:init(world, x, y, leftKey, rightKey, jumpKey, speed, jump, gScale, radius, mass, color, shape, sfr)
+    self.world = world
     self.lk = leftKey
     self.rk = rightKey
     self.jk = jumpKey
@@ -14,6 +51,7 @@ function PlayerBase:init(world, x, y, leftKey, rightKey, jumpKey, speed, jump, g
     self.face = 'kid'
 
     self.body = love.physics.newBody(world, x, y, 'dynamic')
+    self.body:setUserData({ name = 'player' })
 
     if self.sh == 'circle' then
         self.shape = love.physics.newCircleShape(self.radius)
@@ -60,8 +98,30 @@ function PlayerBase:update(dt)
         self.body:setLinearVelocity(self.speed, dy)
     end
 
-    if self.jk and love.keyboard.wasPressed(self.jk) and math.abs(dy) < .01 then
-        self.body:setLinearVelocity(0, -self.jump)
+    if self.jk and love.keyboard.wasPressed(self.jk) then
+        local canJump = false
+
+        if (math.abs(dy) < .01) then
+            canJump = true
+        else
+            -- jump on lines and ramps
+            for _, body in ipairs(self.world:getBodies()) do
+                local name = body:getUserData().name
+
+                if name == 'lines' then
+                    local lines = body:getUserData().shapes
+                    for _, line in ipairs(lines) do
+                        if isPlayerCollidingWithLine(self.body, self.shape, body, line) then
+                            canJump = true
+                        end
+                    end
+                end
+            end
+        end
+
+        if canJump then
+            self.body:setLinearVelocity(0, -self.jump)
+        end
     end
 end
 

@@ -9,7 +9,9 @@ function BaseLevel:init(onWin, groundWidth)
 
     -- walls
     local leftWallBody = love.physics.newBody(self.world, 0, 0, 'static')
+    leftWallBody:setUserData({ name = 'left-wall' })
     local rightWallBody = love.physics.newBody(self.world, VIRTUAL_WIDTH, 0, 'static')
+    rightWallBody:setUserData({ name = 'right-wall' })
     local wallShape = love.physics.newEdgeShape(0, -VIRTUAL_HEIGHT, 0, VIRTUAL_HEIGHT)
     love.physics.newFixture(leftWallBody, wallShape)
     love.physics.newFixture(rightWallBody, wallShape)

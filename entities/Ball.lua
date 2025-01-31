@@ -4,6 +4,7 @@ function Ball:init(world, x, y, radius, bounce, damping, color)
     self.color = color or BALL_COLOR
 
     self.body = love.physics.newBody(world, x, y, 'dynamic')
+    self.body:setUserData({ name = 'ball' })
 
     self.shape = love.physics.newCircleShape(radius)
 
